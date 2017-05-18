@@ -39,7 +39,7 @@
         Phone:
         <input type="text" name="phone" value="" />
         <br/><br/>
-        <input type="Submit"  value="Register" />
+        <button>Register</button>
         
         <br/> <br/>       
              </form> 

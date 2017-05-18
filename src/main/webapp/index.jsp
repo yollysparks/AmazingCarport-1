@@ -9,6 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="CSSz.css">
         <title>Fog Carport Generator</title>
     </head>
     <body>
@@ -16,5 +17,7 @@
             out.print("You need to log in or register");
         }
         %>
+        <b> <a href="Login.jsp"> Press here to login or register</a></b>
+        <br>
     </body>
 </html>
