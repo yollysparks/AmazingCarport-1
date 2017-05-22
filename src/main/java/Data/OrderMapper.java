@@ -16,35 +16,33 @@ import java.sql.Statement;
  * @author felesiah
  */
 public class OrderMapper {
-    
-    public OrderMapper() {
         
-   
-   }
-   public Order getOrderId(int orderid){
-       Connection con = null;
-       ResultSet rs = null;
-        Statement stmt = null;
-        Order order = null;
-        String SQLString
-                = "select name "
-                + "from order "
-                + "where idorder = " + orderid;
+public static Order getOrderByID(int id)throws Exception{
+           Connection con = null;
         try {
             con = Connector.getConnection();
-            stmt = con.createStatement();
-            rs = stmt.executeQuery(SQLString);
-
-            if (rs.next()) {
-                 order = new Order(rs.getString(1),
-                        rs.getInt(2),
-                        rs.getInt(3),
-                        rs.getInt(4));
+            ResultSet res = Connector.doQuery("SELECT * FROM carport.order WHERE `idOrder` = '"+ id +"';");
+            if(!res.next()) throw new Exception("Empty ResultSet!");
+            int idOrder = res.getInt("idOrder");
+            int payment = res.getInt("payment");
+            String date = res.getString("date");
+            int customerid = res.getInt("CustomerId");
+            
+            Order order = new Order(idOrder,payment,date,customerid);
+                        return order;
+                        
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+            throw new Exception("Database exception:\n"+e.getMessage()+"!");
+        } finally {
+            if(con != null){
+                try {
+                    con.close();
+                }catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             }
-        } catch (SQLException e) {
-            System.out.println("Fail in orderMapper - getOrderId");
-            System.out.println(e.getMessage());
-        }       
-        return order;
-   }
+        }
+    }
+  
 }

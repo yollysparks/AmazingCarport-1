@@ -11,69 +11,48 @@ package Business.DomainModel;
  */
 public class Order{
     
-    private String name;
+    private int idOrder;
     private int payment;
-    private int date;
-    private int orderId;
+    private String date;
+    private int CustomerId;
 
-    public Order(String name, int payment, int date,int orderid) {
-        this.name = name;
+    public Order(int id, int payment, String date,int orderid) {
+        this.idOrder = id;
         this.payment = payment;
         this.date = date;
-        this.orderId = orderid;
-    }
-    
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
+        this.CustomerId = orderid;
     }
 
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
+    public int getIdOrder() {
+        return idOrder;
     }
 
-    /**
-     * @return the payment
-     */
+    public void setIdOrder(int idOrder) {
+        this.idOrder = idOrder;
+    }
+
     public int getPayment() {
         return payment;
     }
 
-    /**
-     * @param payment the payment to set
-     */
     public void setPayment(int payment) {
         this.payment = payment;
     }
 
-    /**
-     * @return the date
-     */
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    /**
-     * @param date the date to set
-     */
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public int getOrderId() {
-        return orderId;
+    public int getCustomerId() {
+        return CustomerId;
     }
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
+    public void setCustomerId(int CustomerId) {
+        this.CustomerId = CustomerId;
     }
-
-   
-
-  
+    
 }
