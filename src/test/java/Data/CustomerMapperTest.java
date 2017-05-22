@@ -45,7 +45,7 @@ public class CustomerMapperTest {
     public void testGetEmail() throws Exception {
         System.out.println("getEmail");
         Customer c = cm.getEmail("test");
-        assertTrue("Get Part failed", "test".equals(c.getEmail()));
+        assertTrue("Get Customer failed", "test".equals(c.getEmail()));
        
     }
 
