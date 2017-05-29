@@ -6,10 +6,7 @@
 package Data;
 
 import Business.DomainModel.Customer;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -56,7 +53,7 @@ public class CustomerMapperTest {
     @Test
     public void testCreateCustomer() throws Exception {
         System.out.println("createCustomer");
-        String email = "yolly";
+        String email = "y";
         String password = "yolly";
         String firstName = "yolly";
         String lastName = "yolly";

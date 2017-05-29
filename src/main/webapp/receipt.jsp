@@ -49,8 +49,10 @@ out.println("Unable to connect to database.");
     <br>
     <button type="submit">PRINT</button></TD>
     </TR>
+    <br><TD><FORM ACTION="connectJspToMysql.jsp" method="get" >
+        <button type="submit">GET YOUR PARTS LIST.</button></TD>
 <TR>
-<TD><FORM ACTION="database_query.jsp" method="get" >
+<TD><FORM ACTION="CarportInput.jsp" method="get" >
 <button type="submit">BACK</button></TD>
 </TR>
 </TABLE>

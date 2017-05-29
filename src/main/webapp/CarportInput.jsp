@@ -31,8 +31,9 @@
         </form>
     <br>
 <TR>
-<TD><FORM ACTION="connectJspToMysql.jsp" method="get" >
-<button type="submit">BACK</button></TD>
+<TD><FORM ACTION="Login.jsp" method="get" >
+<button type="submit">BACK</button>
+</TD>
 </TR>
-    </body>
+</body>
 </html>

@@ -20,16 +20,6 @@ import javax.servlet.http.HttpSession;
  */
 public class CarportInput extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
     /*
     This process calculates all the needed parts and their total price
     and then puts then as session objects, so that they would be used later.
