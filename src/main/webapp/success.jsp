@@ -13,7 +13,7 @@
     </head>
     <body>
            You managed to register !
-        <% out.println(session.getAttribute("email"));%>
+        <% out.println(session.getAttribute("customer"));%>
         
         <a href="CarportInput.jsp">Input your measurements to create a sketch!!</a>
     </body>

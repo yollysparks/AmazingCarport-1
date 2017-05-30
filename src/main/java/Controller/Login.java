@@ -53,7 +53,7 @@ public class Login extends HttpServlet {
             }
          
          if( email.equals(customer.getEmail()) || password.equals(customer.getPassword())){
-             session.setAttribute("customer", customer);
+             session.setAttribute("customer", customer.getEmail());
              response.sendRedirect("success.jsp");
          }
          else{

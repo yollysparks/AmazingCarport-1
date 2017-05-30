@@ -8,10 +8,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="CSSz.css">
 <div class="login-page">
-    <% if(request.getAttribute("login") == null){
-        out.print("You eff that up !!!");
-    }%>
-  <div class="form">
+    <div class="form">
     <form method="POST" action="Login">
       <input type="text" name="email"/>
       <input type="text" name="password"/>

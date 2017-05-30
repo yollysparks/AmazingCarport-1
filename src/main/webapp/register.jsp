@@ -15,14 +15,15 @@
         <body>
         <div class="form">
     <form  method="POST" action="Registration">
-        <% if(session.getAttribute("taken") != null){
-            out.print("This email is taken!");
-        }%>
+        
         Email:
         <input type="text" name="email" value="" />
         <br/><br/>
         Password:
-        <input type="text" name="password" value="" />
+        <input type="text" name="password1" value="" />
+        <br/><br/>
+        Repeat Password:
+        <input type="text" name="password2" value="" />
         <br/><br/>
         First Name:
         <input type="text" name="firstName" value="" />

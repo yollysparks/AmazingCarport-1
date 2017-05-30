@@ -28,6 +28,7 @@
             <br>
             <input type="radio" name="roofTopType" value="big"> A bigass rooftop<br>
             <input type="submit" value="Generate">
+            
         </form>
     <br>
 <TR>

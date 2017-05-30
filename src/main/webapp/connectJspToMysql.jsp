@@ -64,7 +64,11 @@ connection.close();
 out.println("Unable to connect to database.");
 }
 %>
-</TABLE><TABLE>
+</
+3
+3
+.0
+TABLE><TABLE>
 <TR>
 <TD><FORM ACTION="database_query.jsp" method="get" >
 <button type="submit"><-- back</button></TD>

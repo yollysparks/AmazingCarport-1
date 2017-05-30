@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Business.DomainServices.Validate;
 import Data.CustomerMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -73,21 +74,20 @@ public class Registration extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         String email = request.getParameter("email");
-            String password = request.getParameter("password");
+            String email = request.getParameter("email");
+            String password1 = request.getParameter("password1");
+            String password2 = request.getParameter("password2");
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String address = request.getParameter("address");
             String zip = request.getParameter("zip");
             String phone = request.getParameter("phone");
             HttpSession session = request.getSession();
-            session.setAttribute("email", email);
-            session.setAttribute("password", password);
+           
             CustomerMapper mapper = new CustomerMapper();
             try{
-                mapper.createCustomer(email, password, firstName, lastName, address, zip, phone);
-                RequestDispatcher rd=request.getRequestDispatcher("success.jsp");  
-                rd.include(request,response);  
+                mapper.createCustomer(email, password1, firstName, lastName, address, zip, phone);
+                response.sendRedirect("success.jsp");  
             } catch(Exception k){};
     }
 
