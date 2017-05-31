@@ -6,6 +6,7 @@
 package Controller;
 
 import Business.DomainServices.CarportCalculator;
+import Business.DomainServices.SVGCreator;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -20,36 +21,10 @@ import javax.servlet.http.HttpSession;
  */
 public class CarportInput extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    
-    /*
-    This process calculates all the needed parts and their total price
-    and then puts then as session objects, so that they would be used later.
-    */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-        Double wight = Double.parseDouble(request.getParameter("wight"));
-        Double length = Double.parseDouble(request.getParameter("length"));
-        boolean isFlat= Boolean.parseBoolean(request.getParameter("isFlat")); 
-        CarportCalculator calculator = new CarportCalculator(wight, length, isFlat);
-        HttpSession session = request.getSession();
-        session.setAttribute("finalPrice", calculator.calculatePrice());
-        session.setAttribute("numberOfParts", calculator.calculateAllParts());
-        response.sendRedirect("CarportPriceAndScetch.jsp");
         }
-        
-    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -74,10 +49,27 @@ public class CarportInput extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    /*
+    This process calculates all the needed parts and their total price
+    and then puts then as session objects, so that they would be used later.
+    */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         response.setContentType("text/html;charset=UTF-8");
+        
+        int width = Integer.parseInt(request.getParameter("width"));
+        int length = Integer.parseInt(request.getParameter("length"));
+        SVGCreator svg = new SVGCreator(width, length);
+        CarportCalculator calculator = new CarportCalculator(width, length, true);
+        HttpSession session = request.getSession();
+        session.setAttribute("sideDraw",svg.drawSide());
+        session.setAttribute("topDraw", svg.getTop());
+        session.setAttribute("finalPrice", calculator.calculatePrice());
+        session.setAttribute("numberOfParts", calculator.calculateAllParts());
+        response.sendRedirect("CarportPriceAndScetch.jsp");
+    
     }
 
     /**

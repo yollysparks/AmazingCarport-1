@@ -16,24 +16,33 @@
     <body>
         <h1>Carport Generator 0.1</h1>
         <form action="CarportInput" method="POST">
+            Width (CM)
+            <select id="width" name="width">
+                <option value="300">300</option>
+                <option value="360">360</option>
+                <option value="390">390</option>
+                <option value="600">600</option>
+            </select>
             <br>
-            Wight:
-            <input type="text" name="wight">
+            Length (CM)
+            <select id="length" name="length">
+                <option value="480">480</option>
+                <option value="540">540</option>
+                <option value="600">600</option>
+                <option value="720">720</option>
+                <option value="810">810</option>
+                <option value="870">870</option>
+                <option value="910">910</option>
+                <option value="990">990</option>
+            </select>
             <br>
-            <br>
-            Length:
-            <input type="text" name="length">
-            <br>
-            <input type="radio" name="roofTopType" value="flat" checked> A flat rooftop<br>
-            <br>
-            <input type="radio" name="roofTopType" value="big"> A bigass rooftop<br>
             <input type="submit" value="Generate">
-            
         </form>
     <br>
 <TR>
-<TD><FORM ACTION="connectJspToMysql.jsp" method="get" >
-<button type="submit">BACK</button></TD>
+<TD><FORM ACTION="Login.jsp" method="get" >
+<button type="submit">BACK</button>
+</TD>
 </TR>
-    </body>
+</body>
 </html>

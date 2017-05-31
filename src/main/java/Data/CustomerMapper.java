@@ -17,7 +17,7 @@ public class CustomerMapper {
  
     
     
-public static Customer getCustomerByID(int id)throws Exception{
+public  Customer getCustomerByID(int id)throws Exception{
            Connection con = null;
         try {
             con = Connector.getConnection();
@@ -47,7 +47,7 @@ public static Customer getCustomerByID(int id)throws Exception{
         }
     }
   
-   public static Customer getEmail(String email)throws Exception{
+   public static  Customer getEmail(String email)throws Exception{
             Connection con = null;
         try {
             con = Connector.getConnection();

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="AmazingCarport">
+  <ClassDiagramComponents>
+    <Class name="Customer" package="Business.DomainModel" visibility="public" xPosition="273.0" yPosition="259.0">
+      <Fields>
+        <Field name="id" type="int" visibility="package"/>
+        <Field name="email" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="address"/>
+          <Argument type="String" name="zip"/>
+          <Argument type="String" name="phone"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getId" returnType="int" visibility="public"/>
+        <Method name="setId" returnType="int" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public"/>
+        <Method name="setEmail" returnType="String" visibility="public">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="setPassword" returnType="String" visibility="public">
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="getFirstName" returnType="String" visibility="public"/>
+        <Method name="setFirstName" returnType="String" visibility="public">
+          <Argument type="String" name="firstName"/>
+        </Method>
+        <Method name="getLastName" returnType="String" visibility="public"/>
+        <Method name="setLastName" returnType="String" visibility="public">
+          <Argument type="String" name="lastName"/>
+        </Method>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="setAddress" returnType="String" visibility="public">
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="getZip" returnType="String" visibility="public"/>
+        <Method name="setZip" returnType="String" visibility="public">
+          <Argument type="String" name="zip"/>
+        </Method>
+        <Method name="getPhone" returnType="String" visibility="public"/>
+        <Method name="setPhone" returnType="String" visibility="public">
+          <Argument type="String" name="phone"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Order" package="Business.DomainModel" visibility="public" xPosition="2000.0" yPosition="259.0">
+      <Fields>
+        <Field name="idOrder" type="int" visibility="private"/>
+        <Field name="payment" type="int" visibility="private"/>
+        <Field name="date" type="String" visibility="private"/>
+        <Field name="CustomerId" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="id"/>
+          <Argument type="int" name="payment"/>
+          <Argument type="String" name="date"/>
+          <Argument type="int" name="orderid"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getIdOrder" returnType="int" visibility="public"/>
+        <Method name="setIdOrder" returnType="int" visibility="public">
+          <Argument type="int" name="idOrder"/>
+        </Method>
+        <Method name="getPayment" returnType="int" visibility="public"/>
+        <Method name="setPayment" returnType="int" visibility="public">
+          <Argument type="int" name="payment"/>
+        </Method>
+        <Method name="getDate" returnType="String" visibility="public"/>
+        <Method name="setDate" returnType="String" visibility="public">
+          <Argument type="String" name="date"/>
+        </Method>
+        <Method name="getCustomerId" returnType="int" visibility="public"/>
+        <Method name="setCustomerId" returnType="int" visibility="public">
+          <Argument type="int" name="CustomerId"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Parts" package="Business.DomainModel" visibility="public" xPosition="1105.0" yPosition="259.0">
+      <Fields>
+        <Field name="itemId" type="int" visibility="private"/>
+        <Field name="name" type="String" visibility="private"/>
+        <Field name="length" type="int" visibility="private"/>
+        <Field name="ammount" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="itemId"/>
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="length"/>
+          <Argument type="int" name="ammount"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getItemId" returnType="int" visibility="public"/>
+        <Method name="setItemId" returnType="int" visibility="public">
+          <Argument type="int" name="itemId"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="setName" returnType="String" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="getLength" returnType="int" visibility="public"/>
+        <Method name="setLength" returnType="int" visibility="public">
+          <Argument type="int" name="length"/>
+        </Method>
+        <Method name="getAmmount" returnType="int" visibility="public"/>
+        <Method name="setAmmount" returnType="int" visibility="public">
+          <Argument type="int" name="ammount"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CarportCalculator" package="Business.DomainServices" visibility="public" xPosition="1511.0" yPosition="259.0">
+      <Fields>
+        <Field name="width" type="double" visibility="package"/>
+        <Field name="length" type="double" visibility="package"/>
+        <Field name="isFlat" type="boolean" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="width"/>
+          <Argument type="double" name="length"/>
+          <Argument type="boolean" name="isFlat"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="calculatePrice" returnType="double" visibility="public"/>
+        <Method name="calculateAllParts" returnType="int" visibility="public"/>
+        <Method name="calculateParts" returnType="int" visibility="public"/>
+        <Method name="calculateBigRoofParts" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CarportInput" package="Controller" visibility="public" xPosition="1506.0" yPosition="15.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Login" package="Controller" visibility="public" xPosition="937.0" yPosition="15.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="doGet" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ReceiptServlet" package="Controller" visibility="public" xPosition="2152.0" yPosition="15.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="doGet" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Registration" package="Controller" visibility="public" xPosition="273.0" yPosition="15.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="processRequest" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doGet" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="doPost" returnType="HttpServletResponse" visibility="protected">
+          <Argument type="HttpServletRequest" name="request"/>
+          <Argument type="HttpServletResponse" name="response"/>
+        </Method>
+        <Method name="getServletInfo" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Connector" package="Data" visibility="public" xPosition="1207.0" yPosition="1175.0">
+      <Fields>
+        <Field name="ip" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="driver" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="port" type="int" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="database" type="String" visibility="public" isStatic="true" isFinal="true"/>
+        <Field name="username" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="password" type="String" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="conn" type="Connection" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getConnection" returnType="Connection" visibility="public" isStatic="true"/>
+        <Method name="doQuery" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="query"/>
+        </Method>
+        <Method name="doUpdate" returnType="String" visibility="public">
+          <Argument type="String" name="query"/>
+        </Method>
+        <Method name="prepareStatement" returnType="String" visibility="public">
+          <Argument type="String" name="query"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CustomerMapper" package="Data" visibility="public" xPosition="255.0" yPosition="821.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getCustomerByID" returnType="int" visibility="public">
+          <Argument type="int" name="id"/>
+        </Method>
+        <Method name="getEmail" returnType="String" visibility="public" isStatic="true">
+          <Argument type="String" name="email"/>
+        </Method>
+        <Method name="createCustomer" returnType="String" visibility="public">
+          <Argument type="String" name="email"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="firstName"/>
+          <Argument type="String" name="lastName"/>
+          <Argument type="String" name="address"/>
+          <Argument type="String" name="zip"/>
+          <Argument type="String" name="phone"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="OrderMapper" package="Data" visibility="public" xPosition="2090.0" yPosition="821.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getOrderByID" returnType="int" visibility="public" isStatic="true">
+          <Argument type="int" name="id"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PartsMapper" package="Data" visibility="public" xPosition="1207.0" yPosition="821.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getPartsById" returnType="int" visibility="public" isStatic="true">
+          <Argument type="int" name="PartId"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Enum name="Database" package="" visibility="public" xPosition="2043.0" yPosition="1570.0">
+      <Literals/>
+    </Enum>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation name="" source="Data.PartsMapper" target="Data.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Data.CustomerMapper" target="Data.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Data.Connector" target="Database" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Data.OrderMapper" target="Business.DomainModel.Order" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Controller.CarportInput" target="Business.DomainServices.CarportCalculator" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Controller.ReceiptServlet" target="Business.DomainModel.Order" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Data.CustomerMapper" target="Business.DomainModel.Customer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Data.OrderMapper" target="Data.Connector" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Controller.Registration" target="Business.DomainModel.Customer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation name="" source="Controller.Login" target="Business.DomainModel.Customer" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Data.PartsMapper" target="Business.DomainModel.Parts" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

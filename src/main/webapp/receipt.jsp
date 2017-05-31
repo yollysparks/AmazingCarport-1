@@ -4,6 +4,8 @@
     Author     : felesiah
 --%>
 
+<%@page import="Business.DomainModel.Order"%>
+<%@page import="Data.OrderMapper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ page import="java.sql.*" %>
@@ -16,63 +18,41 @@
     </head>
     <body>
         <h2>Carport Receipt.</h2>
-<%
-try {
-/* Create string of connection url within specified format with machine
-name, port number and database name. Here machine name id localhost and 
-database name is carport. */
-String connectionURL = "jdbc:mysql://104.236.240.10:3306/carport?useSSL=false";
-// declare a connection by using Connection interface
-Connection connection = null;
-/* declare object of Statement interface that is used for executing sql 
-statements. */
-Statement statement = null;
-// declare a resultset that uses as a table for output data from tha table.
-ResultSet rs = null;
-// Load JBBC driver "com.mysql.jdbc.Driver"
-Class.forName("com.mysql.jdbc.Driver").newInstance();
-/* Create a connection by using getConnection() method that takes parameters 
-of string type connection url, user name and password to connect to database.*/
-connection = DriverManager.getConnection(connectionURL, "fogUser", "zQBL8_jjC");
-/* createStatement() is used for create statement object that is used for 
-sending sql statements to the specified database. */
-statement = connection.createStatement();
-// sql query to retrieve values from the secified table.
-String QueryString = "SELECT * from order;";
-rs = statement.executeQuery(QueryString);
-%>
-<TABLE cellpadding="15" border="1" style="background-color: #ffffcc;">
-<%
-    while (rs.next()) {
-%>
-<TR>
-<TD><%=rs.getString(1)%></TD>
-<TD><%=rs.getString(2)%></TD>
-<TD><%=rs.getString(3)%></TD>
-<TD><%=rs.getString(4)%></TD>
-</TR>
-<% } %>
-<%
-// close all the connections.
-rs.close();
-statement.close();
-connection.close();
+
+
+<font size="+3" color="red">
+<% 
+    try{
+    int id = 0;
+    Order order = OrderMapper.getOrderByID(id);
+      
+                order =  OrderMapper.getOrderByID(1); 
+                session.setAttribute("idOrder", order.getIdOrder());
+                session.setAttribute("date",order.getDate());
+                session.setAttribute("payment",order.getPayment());
+                session.setAttribute("customerId",order.getCustomerId());
+                response.sendRedirect("Receiptfog.jsp");
+           
 } catch (Exception ex) {
 %>
 <font size="+3" color="red"></b>
 <%
 out.println("Unable to connect to database.");
 }
+
+     
 %>
-<font size="+2" color="Black"></b>
-</TABLE><TABLE>
+<font size="+2" color="Black">
+<TABLE>
     <TR>
         <td>Get your receipt! </td> 
     <br>
     <button type="submit">PRINT</button></TD>
     </TR>
+    <br><TD><FORM ACTION="connectJspToMysql.jsp" method="get" >
+        <button type="submit">GET YOUR PARTS LIST.</button></TD>
 <TR>
-<TD><FORM ACTION="database_query.jsp" method="get" >
+<TD><FORM ACTION="CarportInput.jsp" method="get" >
 <button type="submit">BACK</button></TD>
 </TR>
 </TABLE>
