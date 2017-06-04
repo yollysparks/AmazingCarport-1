@@ -70,10 +70,8 @@ out.println("Unable to connect to database.");
 .0
 TABLE><TABLE>
 <TR>
-<TD><FORM ACTION="database_query.jsp" method="get" >
+<TD><FORM ACTION="CarportPriceAndScetch.jsp" method="get" >
 <button type="submit"><-- back</button></TD>
-<p class="message">Want to input measurements? <a href="CarportInput.jsp">Click here!!</a></p>
-
 </TR>
 </TABLE>
     </body>

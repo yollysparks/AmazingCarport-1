@@ -23,7 +23,7 @@
         <div>
        <% out.print(session.getAttribute("sideDraw"));%>
        <br>
-       <% out.print(session.getAttribute("topDrow"));%>
+       <% out.print(session.getAttribute("topDraw"));%>
 <TABLE>
     <TR>
         <p><b>Print your sketch!</b> </p> 
