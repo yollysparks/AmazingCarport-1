@@ -14,7 +14,7 @@
         <title>Carport Generator 0.1</title>
     </head>
     <body>
-           <ul>
+ <ul>
   <li><a class="active" href="index.jsp">Home</a></li>
   <li><a href="Login.jsp">Login</a></li>
   <li><a href="#contact">Contact</a></li>
