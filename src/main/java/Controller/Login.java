@@ -9,8 +9,6 @@ import Business.DomainModel.Customer;
 import Data.CustomerMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -49,7 +47,7 @@ public class Login extends HttpServlet {
             } catch (Exception ex) {
                 System.out.println("Unable to retrieve customer!");
                 ex.printStackTrace();
-                System.exit(0);
+
             }
          
          if( email.equals(customer.getEmail()) || password.equals(customer.getPassword())){

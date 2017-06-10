@@ -14,6 +14,12 @@
         <title>Carport Generator 0.1</title>
     </head>
     <body>
+           <ul>
+  <li><a class="active" href="index.jsp">Home</a></li>
+  <li><a href="Login.jsp">Login</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+</ul>
         <h1>Carport Generator 0.1</h1>
         <form action="CarportInput" method="POST">
             Width (CM)

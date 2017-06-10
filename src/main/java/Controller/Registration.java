@@ -88,7 +88,8 @@ public class Registration extends HttpServlet {
             try{
                 mapper.createCustomer(email, password1, firstName, lastName, address, zip, phone);
                 response.sendRedirect("success.jsp");  
-            } catch(Exception k){};
+                
+            } catch(Exception k){}
     }
 
     /**
