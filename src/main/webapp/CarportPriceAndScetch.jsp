@@ -15,6 +15,12 @@
         <title>JSP Page</title>
     </head>
     <body>
+   <ul>
+  <li><a class="active" href="index.jsp">Home</a></li>
+  <li><a href="Login.jsp">Login</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  </ul>
         <b><font size="+2" color="Black"></b>
         Total Price is : <% out.print(session.getAttribute("finalPrice"));%>
         <br>

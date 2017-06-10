@@ -6,7 +6,18 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="CSSz.css">
+<title> Welcome to Fog Webshop!!</title>
+</head>
+<body>
+  <ul>
+  <li><a class="active" href="index.jsp">Home</a></li>
+  <li><a href="Login.jsp">Login</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  </ul>
 <div class="login-page">
     <div class="form">
     <form method="POST" action="Login">
@@ -17,3 +28,5 @@
     </form>
   </div>
 </div>
+</body>
+</html>

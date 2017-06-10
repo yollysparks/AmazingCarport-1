@@ -15,6 +15,12 @@
         <title>JSP Page</title>
     </head>
     <body>
+  <ul>
+  <li><a class="active" href="index.jsp">Home</a></li>
+  <li><a href="Login.jsp">Login</a></li>
+  <li><a href="#contact">Contact</a></li>
+  <li><a href="#about">About</a></li>
+  </ul>
         <h2>Data from the table 'carport_parts' of database 'carport'</h2>
 <%
 try {
