@@ -47,7 +47,6 @@ public class Login extends HttpServlet {
             } catch (Exception ex) {
                 System.out.println("Unable to retrieve customer!");
                 ex.printStackTrace();
-
             }
          
          if( email.equals(customer.getEmail()) || password.equals(customer.getPassword())){
@@ -56,7 +55,7 @@ public class Login extends HttpServlet {
          }
          else{
              request.setAttribute("login", "failed");
-             response.sendRedirect("index.jsp");
+             response.sendRedirect("Login.jsp");
          }
   
         

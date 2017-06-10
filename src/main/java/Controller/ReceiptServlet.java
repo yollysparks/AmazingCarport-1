@@ -64,12 +64,11 @@ public class ReceiptServlet extends HttpServlet {
         
          try {
                 order =  OrderMapper.getOrderByID(1);
-                
                 session.setAttribute("orderid", order.getIdOrder());
                 session.setAttribute("date",order.getDate());
                 session.setAttribute("finalPrice",calc.calculatePrice());
                 session.setAttribute("customerId",order.getCustomerId());
-              response.sendRedirect("Reciptfog.jsp");
+                response.sendRedirect("Receiptfog.jsp");
                 
             } catch (Exception ex) {
                 out.println("Unable to retrieve customer!");

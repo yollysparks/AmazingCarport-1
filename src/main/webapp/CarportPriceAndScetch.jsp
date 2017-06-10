@@ -1,4 +1,4 @@
- <%-- 
+  <%-- 
     Document   : CarportPartsGenerated
     Created on : Apr 22, 2017, 4:44:11 PM
     Author     : Jack
@@ -24,7 +24,7 @@
         <b><font size="+2" color="Black"></b>
         Total Price is : <% out.print(session.getAttribute("finalPrice"));%>
         <br>
-        # of parts: <% out.print(session.getAttribute("numberOfParts"));%>
+       # of parts: <% out.print(session.getAttribute("numberOfParts"));%>
         <br>
         <div>
        <% out.print(session.getAttribute("sideDraw"));%>

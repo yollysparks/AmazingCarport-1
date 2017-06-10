@@ -20,8 +20,12 @@
   <li><a href="#about">About</a></li>
 </ul>
            You managed to login/register !
+           
         <% out.println(session.getAttribute("email"));%>
-        
-        <a href="CarportInput.jsp">Input your measurements to create a sketch!!</a>
+        <br>
+        <br>
+    <center>
+        <b><a href="CarportInput.jsp">Input your measurements to create a sketch!!</a></b>
+    </center>    
     </body>
 </html>
