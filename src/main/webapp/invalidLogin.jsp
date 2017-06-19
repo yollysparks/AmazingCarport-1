@@ -20,8 +20,20 @@
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
   </ul>
+          <h1>Hello there....... </h1>
+          <% session.getAttribute("failed");%>
          <center>
-            Sorry, you are not a registered user! Please sign up first
+            Sorry, you are not a registered user! Please sign up first.
          </center>
+      <div class="login-page">
+    <div class="form">
+    <form method="POST" action="Login">
+      <input type="text" name="email"/>
+      <input type="password" name="password"/>
+      <button>login</button>
+      <p class="message">Not registered? <a href="register.jsp">Create an account</a></p>
+    </form>
+  </div>
+</div>
     </body>
 </html>

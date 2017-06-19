@@ -22,17 +22,15 @@
   <li><a href="#about">About</a></li>
   </ul>
         <b><font size="+2" color="Black"></b>
-        Total Price is : <% out.print(session.getAttribute("finalPrice"));%>
+        Total Price is : <% out.print(session.getAttribute("price"));%>
         <br>
-        # of parts: <% out.print(session.getAttribute("numberOfParts"));%>
-        <br>
-        <div>
-       <% out.print(session.getAttribute("sideDraw"));%>
+       <% out.print(session.getAttribute("draw"));%>
        <br>
-       <% out.print(session.getAttribute("topDraw"));%>
+     
+ 
 <TABLE>
     <TR>
-        <p><b>Print your sketch!</b> </p> 
+     <p><b>Print your sketch!</b> </p> 
     <br>
     <TD><FORM ACTION="receipt.jsp" method="get" >
     <button type="submit">FINALIZE ORDER</button></TD>
@@ -45,5 +43,5 @@
 <button type="submit">BACK</button></TD>
 </TR>
 </TABLE>
-    </body>
+ </body>
 </html>

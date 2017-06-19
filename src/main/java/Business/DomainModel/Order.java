@@ -16,11 +16,11 @@ public class Order{
     private String date;
     private int CustomerId;
 
-    public Order(int id, int payment, String date,int orderid) {
-        this.idOrder = id;
+    public Order(int orderid, int payment, String date,int customerid) {
+        this.idOrder = orderid;
         this.payment = payment;
         this.date = date;
-        this.CustomerId = orderid;
+        this.CustomerId = customerid;
     }
 
     public int getIdOrder() {

@@ -5,14 +5,9 @@
  */
 package Controller;
 
-import Business.DomainModel.Customer;
-import Business.DomainModel.Order;
-import Business.DomainServices.CarportCalculator;
-import Data.OrderMapper;
+import Business.DomainServices.Carportfacade;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,26 +19,37 @@ import javax.servlet.http.HttpSession;
  *
  * @author felesiah
  */
-@WebServlet(name = "ReceiptServlet", urlPatterns = {"/ReceiptServlet"})
-public class ReceiptServlet extends HttpServlet {
+@WebServlet(name = "OrderServlet", urlPatterns = {"/OrderServlet"})
+public class OrderServlet extends HttpServlet {
 
-   
-   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        OrderMapper om = new OrderMapper();
-        Order order = null;
-        
-        try {
-            order = om.getOrderByCustomerID(1);
-            out.println(order.toString());
-           HttpSession session = request.getSession(); 
-            session.setAttribute("Order", om.getOrderByCustomerID(1));
+        HttpSession session = request.getSession(); 
+             int customerid = (int) request.getAttribute("customerid");
+//          
+         Carportfacade cf = new Carportfacade();         
+        try  {  
+             cf.Order(customerid);      
+            session.setAttribute("order",cf.Order(1));
+            out.println(cf.Order(customerid));
             request.getRequestDispatcher("receipt.jsp"); 
             
+            
         } catch (Exception ex) {
-            Logger.getLogger(PartsServlet.class.getName()).log(Level.SEVERE, null, ex);
+              out.println("error" + ex +"!");
+                session.setAttribute("orderfailed","ExceptionsThrown");
+                request.getRequestDispatcher("CarportInput.jsp").forward(request, response);    
         }
     }
 
@@ -73,9 +79,7 @@ public class ReceiptServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-      processRequest(request, response);
-        
-  
+        processRequest(request, response);
     }
 
     /**

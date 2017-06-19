@@ -27,11 +27,11 @@ public class CustomerMapperTest {
      * Test of getCustomerByID method, of class CustomerMapper.
      */
     @Test
-    public void testGetCustomerByID() throws Exception {
+    public void testGetCustomerBypassword() throws Exception {
         System.out.println("getCustomerByID");
-        Customer c = cm.getCustomerByID(5);
-        assertTrue("Get customer failed", c.getId() == 5);
-       
+        Customer c = cm.getCustomerByPassword("test");
+        assertTrue("Get customer failed", c.getPassword().equals("test"));
+     
     }
 
     /**

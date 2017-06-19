@@ -16,51 +16,29 @@
         <link rel="stylesheet" href="CSSz.css">
         <title>JSP Page</title>
     </head>
-    <body>
+    
   <ul>
   <li><a class="active" href="index.jsp">Home</a></li>
   <li><a href="Login.jsp">Login</a></li>
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
-</ul>
-        <h2>Carport Receipt.</h2>
-
-
-<font size="+3" color="red">
-<% 
-    try{
-    int id = 0;
-    Order order = OrderMapper.getOrderByID(id);
-      
-                order =  OrderMapper.getOrderByID(1); 
-                session.setAttribute("idOrder", order.getIdOrder());
-                session.setAttribute("date",order.getDate());
-                session.setAttribute("payment",order.getPayment());
-                session.setAttribute("customerId",order.getCustomerId());
-                response.sendRedirect("Receiptfog.jsp");
-           
-} catch (Exception ex) {
-%>
-<font size="+3" color="red"></b>
-<%
-out.println("Unable to connect to database.");
-}
-
-     
-%>
-<font size="+2" color="Black">
-<TABLE>
-    <TR>
-        <td>Get your receipt! </td> 
-    <br>
-    <button type="submit">PRINT</button></TD>
-    </TR>
-    <br><TD><FORM ACTION="connectJspToMysql.jsp" method="get" >
-        <button type="submit">GET YOUR PARTS LIST.</button></TD>
-<TR>
-<TD><FORM ACTION="CarportInput.jsp" method="get" >
-<button type="submit">BACK</button></TD>
+  </ul>
+        <h2>Data from the table 'carport_parts' of database 'carport'</h2>
+        <FORM ACTION="ReceiptServlet" method="get" >
+       
+        <select name="Continue">
+            <option>Order</option>
+            <option>Cancel</option>
+        </select><input type="submit" value="Continue" />
+       
+</form>
+   <TABLE>
+       <TD><FORM ACTION="PartsList.jsp" method="get" >
+        <button type="submit">GET YOUR PARTS LIST.</button>
+        <br>
+<TD><FORM ACTION="CarportPriceAndScetch.jsp" method="get" >
+<button type="submit"><--back</button></TD>
 </TR>
 </TABLE>
- </body>
+    
 </html>

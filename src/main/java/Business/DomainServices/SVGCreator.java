@@ -5,11 +5,13 @@
  */
 package Business.DomainServices;
 
+
+
 /**
  *
  * @author ivoni
  */
-public class SVGCreator {
+public class SVGCreator  {
     int length;
     int width;
     StringBuilder res = new StringBuilder();

@@ -21,7 +21,9 @@
 </ul>
            You managed to login/register !
         <% out.println(session.getAttribute("email"));%>
-        
+        <br>
+    <center>
         <a href="CarportInput.jsp">Input your measurements to create a sketch!!</a>
+    </center>
     </body>
 </html>

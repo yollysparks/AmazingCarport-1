@@ -35,7 +35,7 @@ public class Validate{
        }    
        return false;
 }
-    //http://stackoverflow.com/questions/3802192/regexp-java-for-password-validation
+   
     public static boolean Password(String input){
             Pattern p = Pattern.compile("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}", Pattern.CASE_INSENSITIVE);
             if (input != null) {

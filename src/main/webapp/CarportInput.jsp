@@ -24,10 +24,13 @@
         <form action="CarportInput" method="POST">
             Width (CM)
             <select id="width" name="width">
+                <option value="300">250</option>
                 <option value="300">300</option>
                 <option value="360">360</option>
                 <option value="390">390</option>
                 <option value="600">600</option>
+                <option value="720">720</option>
+                <option value="810">810</option>
             </select>
             <br>
             Length (CM)

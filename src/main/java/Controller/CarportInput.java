@@ -5,8 +5,7 @@
  */
 package Controller;
 
-import Business.DomainServices.CarportCalculator;
-import Business.DomainServices.SVGCreator;
+import Business.DomainServices.Carportfacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,11 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 /**
  *
  * @author Jack
  */
+import Business.DomainServices.ExceptionsThrown;
 public class CarportInput extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -61,16 +60,28 @@ public class CarportInput extends HttpServlet {
         
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
-        SVGCreator svg = new SVGCreator(width, length);
-        CarportCalculator calculator = new CarportCalculator(width, length, true);
+        
+        try{
+        //CarportCalculator calculator = new CarportCalculator(width, length, true);
+        Carportfacade cf = new Carportfacade(width, length,true); 
         HttpSession session = request.getSession();
-        session.setAttribute("sideDraw",svg.drawSide());
-        session.setAttribute("topDraw", svg.getTop());
-        session.setAttribute("finalPrice", calculator.calculatePrice());
-        session.setAttribute("numberOfParts", calculator.calculateAllParts());
+         session.setAttribute("price", cf.price(width,length));
+         session.setAttribute("draw", cf.Draw(width,length));
+//         session.setAttribute("order",cf.Order());   
+//        session.setAttribute("sideDraw",svg.drawSide());
+//        session.setAttribute("topDraw", svg.getTop());
+//        session.setAttribute("finalPrice", calculator.calculatePrice());
+//        session.setAttribute("numberOfParts", calculator.calculateAllParts());
         response.sendRedirect("CarportPriceAndScetch.jsp");
-    
+        }
+        catch (Exception ex ) {
+         PrintWriter out = response.getWriter();    
+             request.setAttribute("an error occured","error");
+             request.getRequestDispatcher("CarportInput.jsp");
+        
+        }
     }
+    
 
     /**
      * Returns a short description of the servlet.

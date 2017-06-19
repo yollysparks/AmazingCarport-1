@@ -4,6 +4,7 @@
 package Data;
 
 import Business.DomainModel.Customer;
+import Business.DomainServices.ExceptionsThrown;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,18 +15,16 @@ import java.sql.PreparedStatement;
  * @author felesiah
  */
 public class CustomerMapper {
- 
-    
-    
-public  Customer getCustomerByID(int id)throws Exception{
+     
+public  Customer getCustomerByPassword(String password)throws Exception{
            Connection con = null;
         try {
             con = Connector.getConnection();
-            ResultSet res = Connector.doQuery("SELECT * FROM carport.customer WHERE `id` = '"+ id +"';");
+            ResultSet res = Connector.doQuery("SELECT * FROM carport.customer WHERE `password` = '"+ password +"';");
             if(!res.next()) throw new Exception("Empty ResultSet!");
+            int id = res.getInt("id");
             String email = res.getString("email");
-            String password = res.getString("password");
-            String firstName = res.getString("email");
+            String firstName = res.getString("firstName");
             String lastName = res.getString("lastName");
             String address = res.getString("address");
             String zip = res.getString("zip");
@@ -47,7 +46,7 @@ public  Customer getCustomerByID(int id)throws Exception{
         }
     }
   
-   public static  Customer getEmail(String email)throws Exception{
+   public  Customer getEmail(String email)throws Exception{
             Connection con = null;
         try {
             con = Connector.getConnection();
@@ -55,22 +54,21 @@ public  Customer getCustomerByID(int id)throws Exception{
             if(!res.next()) throw new Exception("Empty ResultSet!");
             int id = res.getInt("id");
             String password = res.getString("password");
-            String firstName = res.getString("email");
+            String firstName = res.getString("firstName");
             String lastName = res.getString("lastName");
             String address = res.getString("address");
             String zip = res.getString("zip");
             String phone = res.getString("phone");
             Customer customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
                         return customer;
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            throw new Exception("Database exception:\n"+e.getMessage()+"!");
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {    
+            throw new ExceptionsThrown();
         } finally {
             if(con != null){
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    ex.printStackTrace();
+                    throw new ExceptionsThrown();
                 }
             }
         }
@@ -109,4 +107,4 @@ public  Customer getCustomerByID(int id)throws Exception{
             }
         }
    }
-}
+}  

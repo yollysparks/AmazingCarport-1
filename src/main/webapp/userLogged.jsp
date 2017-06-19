@@ -20,9 +20,3 @@
 
     </body>
 </html>
-<TR>
-<TD><%=rs.getInt(1)%></TD>
-<TD><%=rs.getString(2)%></TD>
-<TD><%=rs.getDate(3)%></TD>
-<TD><%=rs.getString(4)%></TD>
-</TR>

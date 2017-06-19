@@ -6,43 +6,43 @@
 package Data;
 
 import Business.DomainModel.Order;
+import Business.DomainServices.ExceptionsThrown;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 /**
  *
  * @author felesiah
  */
 public class OrderMapper {
-        
-public static Order getOrderByID(int id)throws Exception{
-           Connection con = null;
+      Connection con = null;   
+public  Order getOrderByCustomerID(int customerid)throws Exception{
+           
+           Order order =null;
         try {
             con = Connector.getConnection();
-            ResultSet res = Connector.doQuery("SELECT * FROM carport.order WHERE `idOrder` = '"+ id +"';");
+            ResultSet res = Connector.doQuery("SELECT * FROM carport.order WHERE `customerid` = '"+ customerid +"';");
             if(!res.next()) throw new Exception("Empty ResultSet!");
             int idOrder = res.getInt("idOrder");
             int payment = res.getInt("payment");
             String date = res.getString("date");
-            int customerid = res.getInt("CustomerId");
-            
-            Order order = new Order(idOrder,payment,date,customerid);
+                      
+            order = new Order(idOrder,payment,date,customerid);
                         return order;
                         
         } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            throw new Exception("Database exception:\n"+e.getMessage()+"!");
+            throw new ExceptionsThrown("Database exception:\n"+e.getMessage()+"!");
         } finally {
             if(con != null){
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    ex.printStackTrace();
                 }
             }
         }
+        
     }
   
 }

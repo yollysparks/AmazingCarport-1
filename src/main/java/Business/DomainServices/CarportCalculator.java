@@ -19,20 +19,24 @@ package Business.DomainServices;
  */
 public class CarportCalculator {
     
-    double width;
-    double length;
+    int width;
+    int length;
     boolean isFlat; //  This valuse is used to check if the rooftop is falt or not.
 
-    public CarportCalculator(double width, double length, boolean isFlat) {
+    public CarportCalculator() {
+    }
+    
+    public CarportCalculator(int width, int length, boolean isFlat) {
         this.width = width;
         this.length = length;
         this.isFlat = isFlat;
     }
     
-    public double calculatePrice(){
-           double priceOfAPart = 50;
+    public int calculatePrice(int width,int length){
+        int PricePerPart =  50; 
+        int priceOfAPart = (width + length) * PricePerPart;
         
-        return (calculateParts() * priceOfAPart);
+        return  priceOfAPart;
     }
     /*
     Used to calculate the needed parts. Can be called later, to list the exact
@@ -55,7 +59,7 @@ public class CarportCalculator {
     */
     public int calculateParts(){
         
-         double lengthParts, wightParts = 0;
+         int lengthParts, wightParts = 0;
         lengthParts = (length * 20); // adding 0.5 to be abble to add 
         wightParts = (width * 20);
         return ((int)Math.ceil(lengthParts + wightParts));//utility cohesion
@@ -69,7 +73,7 @@ public class CarportCalculator {
     Math.ceil is used again, for the same reason as in the previous class.
     */
     public int calculateBigRoofParts(){
-        double sizeOfRoof = width * length;
+        int sizeOfRoof = width * length;
        int partsPerSquareMeter = 100;
        
        /*

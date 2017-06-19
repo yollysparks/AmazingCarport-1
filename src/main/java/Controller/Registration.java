@@ -5,11 +5,9 @@
  */
 package Controller;
 
-import Business.DomainServices.Validate;
-import Data.CustomerMapper;
+import Business.DomainServices.Customerfacade;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -83,12 +81,22 @@ public class Registration extends HttpServlet {
             String zip = request.getParameter("zip");
             String phone = request.getParameter("phone");
             HttpSession session = request.getSession();
-           
-            CustomerMapper mapper = new CustomerMapper();
-            try{
-                mapper.createCustomer(email, password1, firstName, lastName, address, zip, phone);
-                response.sendRedirect("success.jsp");  
-            } catch(Exception k){};
+           Customerfacade cf = new Customerfacade();
+        try {
+            cf.newCustomer(email, password1, firstName, lastName, address, zip, phone);
+             response.sendRedirect("success.jsp");
+//            CustomerMapper mapper = new CustomerMapper();
+//            try{
+//                mapper.createCustomer(email, password1, firstName, lastName, address, zip, phone);
+//                response.sendRedirect("success.jsp");  
+//            } catch(Exception k){
+//              
+//            }
+        } catch (Exception ex) {
+            session.setAttribute("Error",ex +"check your details!!");
+             response.sendRedirect("Login.jsp");
+        }
+            
     }
 
     /**

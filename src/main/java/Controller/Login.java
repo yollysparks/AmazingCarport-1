@@ -5,12 +5,12 @@
  */
 package Controller;
 
-import Business.DomainModel.Customer;
-import Data.CustomerMapper;
+import Business.DomainServices.Customerfacade;
+import Business.DomainServices.ExceptionsThrown;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,26 +42,30 @@ public class Login extends HttpServlet {
         String email = request.getParameter("email");  
         String password = request.getParameter("password"); 
         
-        Customer customer = null;
+        Customerfacade cf = new  Customerfacade();
          try {
-                customer =  CustomerMapper.getEmail(email);
-                System.out.println(customer.toString());
+             cf.customer(email, password);
+               out.println(cf.customer(email, password));
+               response.sendRedirect("success.jsp");
             } catch (Exception ex) {
-                System.out.println("Unable to retrieve customer!");
-                ex.printStackTrace();
-                System.exit(0);
+                System.out.println("error" + ex +"!");
+                request.setAttribute("loginfailed","ExceptionsThrown");
+                request.getRequestDispatcher("invalidLogin.jsp").forward(request, response);   //this is where an exception is handled
+            }                                                                                    //and the invalidLogin page is displayed
+        try {
+            if( email.equals(cf.customer(email, password)) && password.equals(cf.customer(email, password))){
+                session.setAttribute("customer", cf.customer(email, password));
+                response.sendRedirect("success.jsp");
             }
-         
-         if( email.equals(customer.getEmail()) || password.equals(customer.getPassword())){
-             session.setAttribute("customer", customer.getEmail());
-             response.sendRedirect("success.jsp");
-         }
-         else{
-             request.setAttribute("login", "failed");
-             response.sendRedirect("index.jsp");
-         }
-  
-        
+            else if(email.equals(cf.customer(email, password)) || password.equals(cf.customer(email, password))){
+                request.setAttribute("loginfailed", "invalid email");
+                response.sendRedirect("success.jsp");    
+            }
+        } catch (Exception ex) {           
+            System.out.println("error" + ex +"!");
+                request.setAttribute("loginfailed","ExceptionsThrown");
+                request.getRequestDispatcher("invalidLogin.jsp");
+        }
     }  
 
     @Override
