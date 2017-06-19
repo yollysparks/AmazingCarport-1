@@ -32,12 +32,14 @@
         </select><input type="submit" value="Continue" />
        
 </form>
-   <TABLE>
-       <TD><FORM ACTION="PartsList.jsp" method="get" >
-        <button type="submit">GET YOUR PARTS LIST.</button>
-        <br>
+<TABLE>
+ <TD><FORM ACTION="PartsList.jsp" method="get" >
+ <button type="submit">NEXT..</button>
+ <br>
 <TD><FORM ACTION="CarportPriceAndScetch.jsp" method="get" >
-<button type="submit"><--back</button></TD>
+<button type="submit">..BACK</button></TD>
+<br>
+
 </TR>
 </TABLE>
     

@@ -59,22 +59,17 @@ public class PartsMapper {
             int ammount = res.getInt("Amount");
            
              part = new Parts(itemid, name,length,ammount);
-                return part;
+             return part;
             } catch (SQLException e) {
-
-			System.out.println(e.getMessage());
-
+	       System.out.println(e.getMessage());
 		} finally {
-
-			if(con != null){
-                try {
-                    con.close();
-                }catch (SQLException ex) {
-                }
-
-		  }
-    
-	}
+	           if(con != null){
+                     try {
+                       con.close();
+                     }catch (SQLException ex) {
+                     }
+		   }
+               }
      return part; 
   }
 

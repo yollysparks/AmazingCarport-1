@@ -6,6 +6,7 @@
 package Controller;
 
 import Business.DomainServices.Carportfacade;
+import Data.OrderMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -38,11 +39,12 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = request.getSession(); 
              int customerid = (int) request.getAttribute("customerid");
 //          
-         Carportfacade cf = new Carportfacade();         
+//         Carportfacade cf = new Carportfacade();   
+OrderMapper od = new OrderMapper();
         try  {  
-             cf.Order(customerid);      
-            session.setAttribute("order",cf.Order(1));
-            out.println(cf.Order(customerid));
+             od.getOrderByCustomerID(customerid);      
+            session.setAttribute("Order",od.getOrderByCustomerID(customerid));
+            out.println(od.getOrderByCustomerID(customerid));
             request.getRequestDispatcher("receipt.jsp"); 
             
             

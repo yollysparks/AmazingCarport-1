@@ -21,27 +21,18 @@
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
   </ul>
-        <b><font size="+2" color="Black"></b>
+     <font size="+2" color="Black">
         Total Price is : <% out.print(session.getAttribute("price"));%>
-        <br>
-       <% out.print(session.getAttribute("draw"));%>
-       <br>
-     
- 
-<TABLE>
-    <TR>
-     <p><b>Print your sketch!</b> </p> 
-    <br>
+         <br>
+            <% out.print(session.getAttribute("draw"));%>
+         <br>
+     <p><b>Print your sketch!</b></p> 
     <TD><FORM ACTION="receipt.jsp" method="get" >
-    <button type="submit">FINALIZE ORDER</button></TD>
+    <button type="submit">PLACE ORDER</button></TD>
     <br>
-    </TR>
-</TABLE>   
-<TABLE>
-<TR>
-<TD><FORM ACTION="CarportInput.jsp" method="get" >
+     </form>
+<FORM ACTION="CarportInput.jsp" method="get" >
 <button type="submit">BACK</button></TD>
-</TR>
-</TABLE>
+</form>
  </body>
 </html>

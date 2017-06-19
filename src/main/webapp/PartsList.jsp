@@ -34,7 +34,7 @@
    <TABLE>
 <TR>
 <TD><FORM ACTION="CarportPriceAndScetch.jsp" method="get" >
-<button type="submit"><--back</button></TD>
+<button type="submit">BACK</button></TD>
 </TR>
 </TABLE>
     

@@ -18,31 +18,30 @@ import java.sql.SQLException;
  */
 public class OrderMapper {
       Connection con = null;   
-public  Order getOrderByCustomerID(int customerid)throws Exception{
-           
+public  Order getOrderByCustomerID(int customerid)throws SQLException{
+       
+           String querry =("SELECT * FROM carport.order WHERE `customerid` = '"+ customerid +"';");
            Order order =null;
         try {
             con = Connector.getConnection();
-            ResultSet res = Connector.doQuery("SELECT * FROM carport.order WHERE `customerid` = '"+ customerid +"';");
-            if(!res.next()) throw new Exception("Empty ResultSet!");
+            ResultSet res = Connector.doQuery(querry);
+            if(!res.next());
             int idOrder = res.getInt("idOrder");
             int payment = res.getInt("payment");
             String date = res.getString("date");
                       
             order = new Order(idOrder,payment,date,customerid);
-                        return order;
-                        
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            throw new ExceptionsThrown("Database exception:\n"+e.getMessage()+"!");
-        } finally {
-            if(con != null){
+            return order;                
+          } catch (SQLException e) {
+             System.out.println(e.getMessage());
+          } finally {
+             if(con != null){
                 try {
                     con.close();
-                }catch (SQLException ex) {
+                  }catch (SQLException ex) {
                 }
             }
         }
-        
+      return order;  
     }
-  
-}
+  }
