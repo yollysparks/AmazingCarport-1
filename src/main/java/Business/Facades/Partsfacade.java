@@ -19,10 +19,12 @@ public class Partsfacade {
    
      PartsMapper pm = new PartsMapper();
        Connector con = new Connector();
-    public PartsMapper Partsfacade() throws Exception{   
+    
+       public PartsMapper Partsfacade() throws Exception{   
         pm.createProcedures((Connection) con);
         pm.retrieveParts();
-       return pm;
+        pm.selectPartsFromTable();
+        return pm;
     }
     
 }

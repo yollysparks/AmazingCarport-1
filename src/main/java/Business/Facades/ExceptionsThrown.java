@@ -9,7 +9,7 @@ package Business.Facades;
  *
  * @author felesiah
  */
-public class ExceptionsThrown extends Exception {
+public class ExceptionsThrown extends Exception{
     
    public ExceptionsThrown(){
        

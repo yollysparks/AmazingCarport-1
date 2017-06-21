@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Business.Facades.Carportfacade;
 import Business.Facades.Partsfacade;
 import Data.Connector;
 import java.io.IOException;
@@ -39,13 +40,11 @@ public class PartsServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(); 
 
-     Partsfacade pf = new Partsfacade();
-     Connector con = new Connector();
+     Carportfacade cf = new  Carportfacade();
         try { 
-//            pf.Partsfacade().retrieveParts(); 
-pf.Partsfacade().createProcedures((Connection) con);
-            session.setAttribute("Flat", pf.Partsfacade().retrieveParts());
-            out.println(pf.Partsfacade().retrieveParts());
+
+            session.setAttribute("Flat", cf.showParts());
+            out.println(cf.showParts());
             request.getRequestDispatcher("PartsList.jsp"); 
             
         } catch (Exception ex) {

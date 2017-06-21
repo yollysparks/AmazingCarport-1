@@ -6,6 +6,7 @@
 package Data;
 
 import Business.DomainModel.Parts;
+import Business.Facades.ExceptionsThrown;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ import java.sql.Statement;
  */
 public class PartsMapper {
     Connection con = null;
-    
+    ExceptionsThrown e = new ExceptionsThrown();
     public  Parts getParts(int PartId)throws Exception{
            
         try {
@@ -46,32 +47,8 @@ public class PartsMapper {
             
         }
      }
-    public void createProcedures(Connection con)
-    throws SQLException {
-
-    Statement stmtCreateParts = null;
-
-    String queryShowParts =
-        "CREATE DEFINER=`fogUser`@`%` PROCEDURE `new_procedure"+
-         "BEGIN"+
-         "SElect * from carportitemsprice;"+
-         "END";
-
-    try {
-        System.out.println("Calling CREATE PROCEDURE");
-        stmtCreateParts = con.createStatement();
-
-
-    } catch (SQLException e) {
-        
-    } finally {
-        if (stmtCreateParts != null) {
-            stmtCreateParts.close();
-        }
- 
-    }
-}
-        public Parts retrieveParts() throws SQLException{
+   
+        public Parts retrieveParts() throws SQLException, ExceptionsThrown{
 
             String querry=("select * from carportitemsprice;" );
             Parts part = null;
@@ -93,6 +70,7 @@ public class PartsMapper {
                      try {
                        con.close();
                      }catch (SQLException ex) {
+                         throw new ExceptionsThrown("Error",e);
                      }
 		   }
                }
@@ -143,7 +121,33 @@ public class PartsMapper {
 			}
 
 		  }
-return list;
+        return list;
 	}
+        
+   public void createProcedures(Connection con)//using collable statement to call stored procedures
+    throws SQLException {
+
+    Statement stmtCreateParts = null;
+
+    String queryShowParts =
+        "CREATE DEFINER=`fogUser`@`%` PROCEDURE `new_procedure"+
+         "BEGIN"+
+         "SElect * from carportitemsprice;"+
+         "END";
+
+    try {
+        System.out.println("Calling CREATE PROCEDURE");
+        stmtCreateParts = con.createStatement();
+
+
+    } catch (SQLException e) {
+        
+    } finally {
+        if (stmtCreateParts != null) {
+            stmtCreateParts.close();
+        }
+ 
+    }
+}
   }
 
