@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -9,8 +9,6 @@ import Business.Facades.Customerfacade;
 import Business.Facades.ExceptionsThrown;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -47,8 +45,8 @@ public class Login extends HttpServlet {
              cf.customer(email, password);
                out.println(cf.customer(email, password));
                response.sendRedirect("success.jsp");
-            } catch (Exception ex) {
-                System.out.println("error" + ex +"!");
+            } catch (Exception ex) {              
+                out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
                 request.getRequestDispatcher("invalidLogin.jsp").forward(request, response);   //this is where an exception is handled
             }                                                                                    //and the invalidLogin page is displayed
