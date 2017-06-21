@@ -115,6 +115,8 @@ li a:hover:not(.active) {
   color: #EF3B3A;
 }
 body {
+   
+  background-image: url("paper.gif");
   background: #76b852; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);

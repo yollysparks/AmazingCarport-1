@@ -13,12 +13,15 @@
         <title>Fog Carport Generator</title>
     </head>
     <body>
-  <ul>
+
+        <ul>
   <li><a class="active" href="index.jsp">Home</a></li>
   <li><a href="Login.jsp">Login</a></li>
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
-  </ul>
+</ul>
+
+
         <% if(session.getAttribute("customer") == null){
             out.print("You need to log in or register");
         }

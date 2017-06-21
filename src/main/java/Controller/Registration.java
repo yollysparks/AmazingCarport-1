@@ -81,6 +81,7 @@ public class Registration extends HttpServlet {
             String zip = request.getParameter("zip");
             String phone = request.getParameter("phone");
             HttpSession session = request.getSession();
+
            Customerfacade cf = new Customerfacade();
         try {
             cf.newCustomer(email, password1, firstName, lastName, address, zip, phone);
@@ -97,6 +98,7 @@ public class Registration extends HttpServlet {
              response.sendRedirect("Login.jsp");
         }
             
+
     }
 
     /**

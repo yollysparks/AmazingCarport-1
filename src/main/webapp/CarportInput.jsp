@@ -14,12 +14,13 @@
         <title>Carport Generator 0.1</title>
     </head>
     <body>
-  <ul>
+ <ul>
   <li><a class="active" href="index.jsp">Home</a></li>
   <li><a href="Login.jsp">Login</a></li>
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
-  </ul>
+</ul>
+
         <h1>Carport Generator 0.1</h1>
         <form action="CarportInput" method="POST">
             Width (CM)
@@ -32,6 +33,7 @@
                 <option value="720">720</option>
                 <option value="810">810</option>
             </select>
+            <br>
             <br>
             Length (CM)
             <select id="length" name="length">

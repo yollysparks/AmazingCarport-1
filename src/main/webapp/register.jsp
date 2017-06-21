@@ -13,7 +13,9 @@
         <title> Register page</title>
         </head>
         <body>
+
              <ul>
+
   <li><a class="active" href="index.jsp">Home</a></li>
   <li><a href="Login.jsp">Login</a></li>
   <li><a href="#contact">Contact</a></li>

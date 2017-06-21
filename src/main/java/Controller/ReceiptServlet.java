@@ -74,9 +74,25 @@ public class ReceiptServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       processRequest(request, response);
+         HttpSession session = request.getSession();
+        PrintWriter out = response.getWriter();
+        OrderMapper om = new OrderMapper();
+        Order order = null;
         
+        try {
+            order = om.getOrderByCustomerID(1);
+            out.println(order.toString());
+            session.setAttribute("Order", om.getOrderByCustomerID(1));
+            request.getRequestDispatcher("receipt.jsp"); 
+            
+        } catch (Exception ex) {
+            Logger.getLogger(PartsServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+        
+   }  
+
   
-    }
 
     /**
      * Returns a short description of the servlet.

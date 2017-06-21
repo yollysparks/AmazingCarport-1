@@ -44,7 +44,6 @@ public class Connector {
 	 * @param query the query to be executed
 	 * @return a ResultSet containing the rows which fulfills the query
          * @throws java.sql.SQLException
-	 * @throws DALException
 	 */
 	public static ResultSet doQuery(String query) throws SQLException {
 		Statement statement = conn.createStatement();
@@ -56,7 +55,7 @@ public class Connector {
 	 * 
 	 * @param query the query to be executed
 	 * @return 1 if update successful, else 0
-	 * @throws DALException
+	 * @throws SQLException
 	 */
 	public boolean doUpdate(String query) throws SQLException {
 		Statement statement = conn.createStatement();

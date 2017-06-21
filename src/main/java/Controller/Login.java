@@ -56,6 +56,8 @@ public class Login extends HttpServlet {
             if( email.equals(cf.customer(email, password)) && password.equals(cf.customer(email, password))){
                 session.setAttribute("customer", cf.customer(email, password));
                 response.sendRedirect("success.jsp");
+                System.out.println("Unable to retrieve customer!");
+//                ex.printStackTrace();
             }
             else if(email.equals(cf.customer(email, password)) || password.equals(cf.customer(email, password))){
                 request.setAttribute("loginfailed", "invalid email");
@@ -66,6 +68,8 @@ public class Login extends HttpServlet {
                 request.setAttribute("loginfailed","ExceptionsThrown");
                 request.getRequestDispatcher("invalidLogin.jsp");
         }
+  
+        
     }  
 
     @Override

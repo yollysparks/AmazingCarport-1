@@ -7,7 +7,6 @@ package Controller;
 
 import Business.Facades.Carportfacade;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +17,7 @@ import javax.servlet.http.HttpSession;
  * @author Jack
  */
 import Business.Facades.ExceptionsThrown;
+import java.io.PrintWriter;
 public class CarportInput extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -57,7 +57,7 @@ public class CarportInput extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          response.setContentType("text/html;charset=UTF-8");
-        
+        PrintWriter out = response.getWriter();   
         int width = Integer.parseInt(request.getParameter("width"));
         int length = Integer.parseInt(request.getParameter("length"));
         
@@ -75,7 +75,7 @@ public class CarportInput extends HttpServlet {
         response.sendRedirect("CarportPriceAndScetch.jsp");
         }
         catch (Exception ex ) {
-         PrintWriter out = response.getWriter();    
+          
              request.setAttribute("an error occured","error");
              request.getRequestDispatcher("CarportInput.jsp");
         
