@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.DomainServices;
+package Business.Facades;
 
 import Business.DomainModel.Customer;
 import Business.DomainModel.Order;
 import Business.DomainModel.Parts;
+import Business.DomainServices.CarportCalculator;
+import Business.DomainServices.SVGCreator;
 import Data.CustomerMapper;
 import Data.OrderMapper;
 import Data.PartsMapper;

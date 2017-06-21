@@ -5,8 +5,8 @@
  */
 package Controller;
 
-import Business.DomainServices.Customerfacade;
-import Business.DomainServices.ExceptionsThrown;
+import Business.Facades.Customerfacade;
+import Business.Facades.ExceptionsThrown;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;

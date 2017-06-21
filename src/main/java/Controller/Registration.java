@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Business.DomainServices.Customerfacade;
+import Business.Facades.Customerfacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;

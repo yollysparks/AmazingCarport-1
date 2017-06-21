@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Business.DomainServices.Carportfacade;
+import Business.Facades.Carportfacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Jack
  */
-import Business.DomainServices.ExceptionsThrown;
+import Business.Facades.ExceptionsThrown;
 public class CarportInput extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

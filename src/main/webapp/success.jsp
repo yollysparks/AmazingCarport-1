@@ -19,7 +19,8 @@
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
 </ul>
-           You managed to login/register !
+           You managed to login/register!
+           
         <% out.println(session.getAttribute("email"));%>
         <br>
     <center>
