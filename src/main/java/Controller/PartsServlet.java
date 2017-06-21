@@ -6,8 +6,10 @@
 package Controller;
 
 import Business.Facades.Partsfacade;
+import Data.Connector;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,9 +40,10 @@ public class PartsServlet extends HttpServlet {
         HttpSession session = request.getSession(); 
 
      Partsfacade pf = new Partsfacade();
-
+     Connector con = new Connector();
         try { 
-            pf.Partsfacade().retrieveParts(); 
+//            pf.Partsfacade().retrieveParts(); 
+pf.Partsfacade().createProcedures((Connection) con);
             session.setAttribute("Flat", pf.Partsfacade().retrieveParts());
             out.println(pf.Partsfacade().retrieveParts());
             request.getRequestDispatcher("PartsList.jsp"); 

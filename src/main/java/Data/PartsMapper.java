@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -45,6 +46,31 @@ public class PartsMapper {
             
         }
      }
+    public void createProcedures(Connection con)
+    throws SQLException {
+
+    Statement stmtCreateParts = null;
+
+    String queryShowParts =
+        "CREATE DEFINER=`fogUser`@`%` PROCEDURE `new_procedure"+
+         "BEGIN"+
+         "SElect * from carportitemsprice;"+
+         "END";
+
+    try {
+        System.out.println("Calling CREATE PROCEDURE");
+        stmtCreateParts = con.createStatement();
+
+
+    } catch (SQLException e) {
+        
+    } finally {
+        if (stmtCreateParts != null) {
+            stmtCreateParts.close();
+        }
+ 
+    }
+}
         public Parts retrieveParts() throws SQLException{
 
             String querry=("select * from carportitemsprice;" );

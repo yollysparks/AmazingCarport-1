@@ -34,7 +34,6 @@
                 <option value="810">810</option>
             </select>
             <br>
-            <br>
             Length (CM)
             <select id="length" name="length">
                 <option value="480">480</option>

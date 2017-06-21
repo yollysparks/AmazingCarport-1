@@ -14,15 +14,7 @@
     </head>
     <body>
 
-         <ul>
-  <li><a class="active" href="index.jsp">Home</a></li>
-  <li><a href="Login.jsp">Login</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
-</ul>
-           You managed to login/register!
-
-           <ul>
+  <ul>
   <li><a class="active" href="index.jsp">Home</a></li>
   <li><a href="Login.jsp">Login</a></li>
   <li><a href="#contact">Contact</a></li>
@@ -32,12 +24,6 @@
 
            
         <% out.println(session.getAttribute("email"));%>
-        <br>
-
-    <center>
-        <a href="CarportInput.jsp">Input your measurements to create a sketch!!</a>
-    </center>
-
         <br>
     <center>
         <b><a href="CarportInput.jsp">Input your measurements to create a sketch!!</a></b>
