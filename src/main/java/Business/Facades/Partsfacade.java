@@ -7,7 +7,9 @@ package Business.Facades;
 
 
 
+import Data.Connector;
 import Data.PartsMapper;
+import java.sql.Connection;
 
 /**
  *
@@ -16,8 +18,9 @@ import Data.PartsMapper;
 public class Partsfacade {
    
      PartsMapper pm = new PartsMapper();
-    
-    public PartsMapper Partsfacade() throws Exception{    
+       Connector con = new Connector();
+    public PartsMapper Partsfacade() throws Exception{   
+        pm.createProcedures((Connection) con);
         pm.retrieveParts();
        return pm;
     }
