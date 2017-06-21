@@ -23,7 +23,7 @@ public class Carportfacade {
   OrderMapper om = new OrderMapper();
   PartsMapper pm= new PartsMapper();
   
-  CarportCalculator calc =new CarportCalculator();
+  CarportCalculator calc = new CarportCalculator();
     public Carportfacade(int width, int length, boolean isFlat){
     }
     public Carportfacade() {
