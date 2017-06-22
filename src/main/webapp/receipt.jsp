@@ -23,7 +23,7 @@
   <li><a href="#contact">Contact</a></li>
   <li><a href="#about">About</a></li>
   </ul>
-        <h2>Data from the table 'carport_parts' of database 'carport'</h2>
+        <h2>Data from the table 'carport_orders' of database 'carport'</h2>
         <FORM ACTION="ReceiptServlet" method="get" >
        
         <select name="Continue">
