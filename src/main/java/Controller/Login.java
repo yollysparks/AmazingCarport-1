@@ -48,9 +48,9 @@ public class Login extends HttpServlet {
             } catch (Exception ex) {              
                 out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
-                request.getRequestDispatcher("invalidLogin.jsp").forward(request, response);   //this is where an exception is handled
-            }                                                                                  //and the invalidLogin page is displayed instead of the 
-                                                                                               //the page to crush.
+                request.getRequestDispatcher("invalidLogin.jsp").forward(request, response); //this is where an exception is handled
+            }                                                                                //and the invalidLogin page is displayed instead of the 
+                                                                                             //the page to crush.
         try {
             if( email.equals(cf.customer(email, password)) && password.equals(cf.customer(email, password))){
                 session.setAttribute("customer", cf.customer(email, password));
