@@ -58,10 +58,6 @@ public class SVGCreator  {
         this.length = length;
     }
     
-    public String getTop(){     
-        return top;
-        
-}
     public String drawSide(){
        int SVGWidth = length + 160;
        int roofWidth = length;
@@ -93,6 +89,9 @@ public class SVGCreator  {
 "</svg>");
        return res.toString();
     }
+      public String getTop(){     
+        return top;
+      }
 }
 
 
