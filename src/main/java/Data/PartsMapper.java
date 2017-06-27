@@ -124,30 +124,5 @@ public class PartsMapper {
         return list;
 	}
         
-   public void createProcedures(Connection con)//using collable statement to call stored procedures
-    throws SQLException {
-
-    Statement stmtCreateParts = null;
-
-    String queryShowParts =
-        "CREATE DEFINER=`fogUser`@`%` PROCEDURE `new_procedure"+
-         "BEGIN"+
-         "SElect * from carportitemsprice;"+
-         "END";
-
-    try {
-        System.out.println("Calling CREATE PROCEDURE");
-        stmtCreateParts = con.createStatement();
-
-
-    } catch (SQLException e) {
-        
-    } finally {
-        if (stmtCreateParts != null) {
-            stmtCreateParts.close();
-        }
- 
-    }
-}
   }
 

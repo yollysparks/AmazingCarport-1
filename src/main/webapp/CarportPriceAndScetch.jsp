@@ -22,14 +22,10 @@
   <li><a href="#about">About</a></li>
 </ul>
         <b><font size="+2" color="Black"></b>
-        Total Price is : <% out.print(session.getAttribute("finalPrice"));%>
-        <br>
-       # of parts: <% out.print(session.getAttribute("numberOfParts"));%>
-        <br>
-        <div>
-       <% out.print(session.getAttribute("sideDraw"));%>
-       <br>
-       <% out.print(session.getAttribute("topDraw"));%>
+        Total Price is : <% out.print(session.getAttribute("price"));%>
+         <br>
+            <% out.print(session.getAttribute("draw"));%>
+         <br>
 <TABLE>
     <TR>
         <p><b>Print your sketch!</b> </p> 

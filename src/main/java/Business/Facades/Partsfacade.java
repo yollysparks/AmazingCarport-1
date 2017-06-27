@@ -17,14 +17,10 @@ import java.sql.Connection;
  */
 public class Partsfacade {
    
-     PartsMapper pm = new PartsMapper();
-       Connector con = new Connector();
+    PartsMapper pm = new PartsMapper();
     
-       public PartsMapper Partsfacade() throws Exception{   
-        pm.createProcedures((Connection) con);
+    public PartsMapper Partsfacade() throws Exception{    
         pm.retrieveParts();
-        pm.selectPartsFromTable();
-        return pm;
+       return pm;
     }
-    
 }
