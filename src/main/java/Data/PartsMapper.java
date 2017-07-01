@@ -48,7 +48,7 @@ public class PartsMapper {
         }
      }
    
-        public Parts retrieveParts() throws SQLException, ExceptionsThrown{
+       public Parts retrieveParts() throws SQLException, ExceptionsThrown{
 
             String querry=("select * from carportitemsprice;" );
             Parts part = null;
@@ -76,7 +76,7 @@ public class PartsMapper {
                }
      return part; 
   }
-
+     
         
     
         public Parts selectPartsFromTable() throws SQLException {
