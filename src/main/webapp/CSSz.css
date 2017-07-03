@@ -22,7 +22,9 @@ li a {
 li a:hover:not(.active) {
     background-color: #111;
 }
-
+img { 
+    width:100%; 
+}
 .active {
     background-color: #4CAF50;
 }
@@ -114,9 +116,9 @@ li a:hover:not(.active) {
 .container .info span .fa {
   color: #EF3B3A;
 }
-body {
-   
-  background-image: url("paper.gif");
+body {  
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsOGbKJA4uXYsROxWmf8uRg2dkwKI9cylJ3hYT5IgyGWGz0PUWQA");
+  background-repeat: no-repeat;
   background: #76b852; /* fallback for old browsers */
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);
