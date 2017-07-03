@@ -22,8 +22,14 @@
   <li><a href="#about">About</a></li>
 </ul>
         <b><font size="+2" color="Black"></b>
-        Total Price is : <% out.print(session.getAttribute("price"));%>
-         <br>
+        
+    <align-right>
+        The carport will come to cost around.....
+        <br>
+        <b> Total Price: <% out.print(session.getAttribute("price") + " " +"dkk");%></b>
+     </align-right>
+    <br>
+        <br>
             <% out.print(session.getAttribute("draw"));%>
          <br>
 <TABLE>

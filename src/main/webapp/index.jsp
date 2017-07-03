@@ -26,7 +26,13 @@
             out.print("You need to log in or register");
         }
         %>
+    <center>
         <b> <a href="Login.jsp"> Press here to login or register</a></b>
+    </center>
+        <br>
+        <center>
+        <img src="https://www.johannesfog.dk/globalassets/inriver/resources/9078633_carport_enkelt_300x62m_web.jpg" style="width:80%;height:50%;">
+        </center>
         <br>
     </body>
 </html>

@@ -62,7 +62,7 @@ public class Login extends HttpServlet {
                 request.setAttribute("loginfailed", "invalid email");
                 response.sendRedirect("success.jsp");    
             }
-        } catch (Exception ex) {           
+        } catch (Exception ex){           
             System.out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
                 request.getRequestDispatcher("invalidLogin.jsp");

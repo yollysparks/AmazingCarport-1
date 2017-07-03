@@ -40,7 +40,7 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    ex.printStackTrace();
+                    throw new ExceptionsThrown();
                 }
             }
         }
@@ -102,7 +102,7 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    ex.printStackTrace();
+                    throw new ExceptionsThrown();
                 }
             }
         }
