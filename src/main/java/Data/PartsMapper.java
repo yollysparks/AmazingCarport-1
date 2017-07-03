@@ -7,17 +7,20 @@ package Data;
 
 import Business.DomainModel.Parts;
 import Business.Facades.ExceptionsThrown;
+import com.mysql.cj.api.Session;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 /**
  *
  * @author felesiah
  */
 public class PartsMapper {
+    
     Connection con = null;
     ExceptionsThrown e = new ExceptionsThrown();
     public  Parts getParts(int PartId)throws Exception{
@@ -48,7 +51,7 @@ public class PartsMapper {
         }
      }
    
-       public Parts retrieveParts() throws SQLException, ExceptionsThrown{
+   public Parts retrieveParts() throws SQLException, ExceptionsThrown{
 
             String querry=("select * from carportitemsprice;" );
             Parts part = null;
@@ -56,21 +59,21 @@ public class PartsMapper {
             con= Connector.getConnection();          
             ResultSet res = Connector.doQuery(querry);
             if(!res.next());
-            int itemid = res.getInt("ItemID");
-            String name = res.getString("Name");
-            int length = res.getInt("Length");
-            int ammount = res.getInt("Amount");
+          int  itemid = res.getInt(1);
+          String  name = res.getString(2);
+          int  length = res.getInt(3);
+          int  ammount = res.getInt(4);
            
              part = new Parts(itemid, name,length,ammount);
              return part;
-            } catch (SQLException e) {
-	       System.out.println(e.getMessage());
+            } catch (SQLException ex) {
+	       System.out.println(ex.getMessage());
 		} finally {
 	           if(con != null){
                      try {
                        con.close();
                      }catch (SQLException ex) {
-                         throw new ExceptionsThrown("Error",e);
+                         throw new ExceptionsThrown("Error",ex);
                      }
 		   }
                }
@@ -79,50 +82,52 @@ public class PartsMapper {
      
         
     
-        public Parts selectPartsFromTable() throws SQLException {
-
-		Connection dbConnection = null;
-		PreparedStatement preparedStatement = null;
-
-		String selectSQL = "SELECT * FROM list,carport.order where list.id = ? and carport.order.customerid=list.customerid;";
-                Parts list =null;
-		try {
-			dbConnection = Connector.getConnection();
-			preparedStatement = dbConnection.prepareStatement(selectSQL);
-			preparedStatement.setInt(1, 1001);
-
-			// execute select SQL stetement
-			ResultSet rs = preparedStatement.executeQuery();
-
-			while (!rs.next()) {
-
-				int item = rs.getInt(1);
-                                String name = rs.getString(5);
-				int length = rs.getInt(2);
-				int ammount = rs.getInt(3);
-                             
-
-			    list = new Parts(item,name,length,ammount);
-                             return list;
-                        }
-                        
-		} catch (SQLException e) {
-
-			System.out.println(e.getMessage());
-
-		} finally {
-
-			if (preparedStatement != null) {
-				preparedStatement.close();
-			}
-
-			if (dbConnection != null) {
-				dbConnection.close();
-			}
-
-		  }
-        return list;
-	}
+//        public List <Parts> partslist ()throws SQLException {
+//
+//		Connection dbConnection = null;
+//		PreparedStatement preparedStatement = null;
+//
+//		String selectSQL = "SELECT * FROM list,carport.order where list.id = ? and carport.order.customerid=list.customerid;";
+//                
+//		Parts parts = null;
+//                try{
+//			dbConnection = Connector.getConnection();
+//			preparedStatement = dbConnection.prepareStatement(selectSQL);
+//			preparedStatement.setInt(1, 1001);
+//
+//			// execute select SQL stetement
+//			ResultSet rs = preparedStatement.executeQuery();
+//                  
+//			while (!rs.next()) {
+//
+//				int item = rs.getInt(1);
+//                                String name = rs.getString(5);
+//				int length = rs.getInt(2);
+//				int ammount = rs.getInt(3);
+//                             
+//                        
+//			    parts = new Parts(item,name,length,ammount);
+//                             return (List<Parts>) parts;
+//                        }
+//                        
+//		} catch (SQLException e) {
+//
+//			System.out.println(e.getMessage());
+//
+//		} finally {
+//
+//			if (preparedStatement != null) {
+//				preparedStatement.close();
+//			}
+//
+//			if (dbConnection != null) {
+//				dbConnection.close();
+//			}
+//
+//		  }
+//        return  (List<Parts>) parts;
+//	}
         
+      
   }
 
