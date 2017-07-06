@@ -61,7 +61,9 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException, Exception
             int  customerid = res.getInt("customerid");
            
            order = new Order(idOrder,payment,date,customerid);
-             return order;
+             
+           return order;
+             
             }catch (SQLException ex) {
 	       System.out.println(ex.getMessage());
 		} finally {

@@ -43,7 +43,8 @@ public class Carportfacade {
       return "Sideview :" + sketch1  + sketch2 + "Topview: ";       
     }
     
-    public OrderMapper Order() throws Exception{
+    public OrderMapper Order(int id) throws Exception{
+      om.getOrderByCustomerID(id);
       om.getOrders();
        return om;
     } 
