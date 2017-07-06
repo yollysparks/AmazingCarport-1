@@ -31,8 +31,8 @@ public class Carportfacade {
     }
     public Carportfacade() {}
     
-    public PartsMapper showParts() throws Exception{   
-       pm.retrieveParts();
+    public PartsMapper showParts() throws Exception{      
+     pm.retrieveParts();
         return pm;
     
     

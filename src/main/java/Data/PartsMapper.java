@@ -10,6 +10,9 @@ import Business.Facades.ExceptionsThrown;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
 /**
  *
@@ -54,13 +57,13 @@ public class PartsMapper {
             try{
             con= Connector.getConnection();          
             ResultSet res = Connector.doQuery(querry);
-            if(!res.next());
+            while(!res.next());
             int  itemid = res.getInt(1);
             String  name = res.getString(2);
             int  length = res.getInt(3);
             int  ammount = res.getInt(4);
            
-             part = new Parts(itemid, name,length,ammount);
+           part = new Parts(itemid, name,length,ammount);
              return part;
             }catch (SQLException ex) {
 	       System.out.println(ex.getMessage());
@@ -74,6 +77,35 @@ public class PartsMapper {
 		   }
                }
      return part; 
-    }     
-  }
-
+    }   
+   
+    public Parts listParts() throws SQLException, ExceptionsThrown{
+     ArrayList<Parts> partslist = new ArrayList<Parts>();
+     Parts part = null;      
+     String sql = ("SELECT * FROM carportitemsprice ORDER BY itemid;");
+     try{
+       Statement st = con.createStatement();
+       ResultSet rs = st.executeQuery(sql); 
+       if(rs.next()) { 
+            part.setItemId(rs.getInt(1));
+            part.setName(rs.getString(2));
+            part.setLength(rs.getInt(3));
+            part.setAmmount(rs.getInt(4));
+           
+            partslist.add(part);
+          }
+      } catch (SQLException ex) {
+              throw new ExceptionsThrown("Error",ex); 
+        } finally {
+	           if(con != null){
+                     try {
+                       con.close();
+                     }catch (SQLException ex) {
+                         throw new ExceptionsThrown("Error",ex);
+                     }
+		   }
+               }
+          return part;
+      }
+}
+    
