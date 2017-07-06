@@ -34,15 +34,14 @@ public class PartsMapper {
            
             Parts parts = new Parts(itemid, name,length,ammount);
                         return parts;
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
-            throw new Exception("Database exception:\n"+e.getMessage()+"!");
+        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException ex) {
+            throw new Exception("Database exception:\n"+ex.getMessage()+"!");
         } finally {
             if(con != null){
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    ex.printStackTrace();
+                    throw new ExceptionsThrown("Error",ex);
                 }
             }
             
@@ -78,20 +77,20 @@ public class PartsMapper {
      return part; 
     }   
    
-    public Parts listParts() throws SQLException, ExceptionsThrown{
-     ArrayList<Parts> partslist = new ArrayList<Parts>();
-     Parts part = null;      
-     String sql = ("SELECT * FROM carportitemsprice ORDER BY itemid;");
+    public ArrayList<Parts> listParts() throws SQLException, ExceptionsThrown{
+        
+        Statement st = con.createStatement();
+        String sql = ("SELECT * FROM carportitemsprice;");
+        ArrayList<Parts> partslist = new ArrayList<Parts>();
+        Parts part = null;     
      try{
-       Statement st = con.createStatement();
        ResultSet rs = st.executeQuery(sql); 
-       if(rs.next()) { 
-            part.setItemId(rs.getInt(1));
-            part.setName(rs.getString(2));
-            part.setLength(rs.getInt(3));
-            part.setAmmount(rs.getInt(4));
-           
-            partslist.add(part);
+       while(rs.next()) { 
+            int id = rs.getInt(1);
+            String name =rs.getString(2);
+            int length= rs.getInt(3);
+            int ammount =rs.getInt(4);
+            part= new Parts(id,name,length,ammount);
           }
       } catch (SQLException ex) {
               throw new ExceptionsThrown("Error",ex); 
@@ -104,7 +103,7 @@ public class PartsMapper {
                      }
 		   }
                }
-          return part;
+          return partslist;
       }
 }
     

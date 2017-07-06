@@ -43,10 +43,10 @@ public class OrderServlet extends HttpServlet {
         HttpSession session = request.getSession(); 
              
         Carportfacade cf = new Carportfacade();   
-      int id = 0;
+      
         try  {       
-            session.setAttribute("Order",cf.Order(id).getOrderByCustomerID(1));
-            out.println(cf.Order(id).getOrderByCustomerID(1));
+            session.setAttribute("Order",cf.Order().getOrders());
+            out.println(cf.Order().getOrders());
             request.getRequestDispatcher("receipt.jsp"); 
             
         } catch (ExceptionsThrown | SQLException ex) {
