@@ -45,6 +45,7 @@ public class PartsServlet extends HttpServlet {
             session.setAttribute("Flat", cf.showParts().retrieveParts());
             request.getRequestDispatcher("parts.jsp").include(request, response); 
             out.println( cf.showParts().retrieveParts());
+            
         } catch (Exception ex) {
                 out.println("error" + ex +"!");
                 request.setAttribute("orderfailed","ExceptionsThrown");
