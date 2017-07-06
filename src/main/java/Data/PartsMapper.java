@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 /**
  *
@@ -57,7 +56,7 @@ public class PartsMapper {
             try{
             con= Connector.getConnection();          
             ResultSet res = Connector.doQuery(querry);
-            while(!res.next());
+            if(!res.next());
             int  itemid = res.getInt(1);
             String  name = res.getString(2);
             int  length = res.getInt(3);

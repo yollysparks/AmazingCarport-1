@@ -19,7 +19,7 @@ import java.sql.Statement;
  */
 public class OrderMapper {
       Connection con = null;   
-public  Order getOrderByCustomerID(int customerid)throws SQLException{
+public  Order getOrderByCustomerID(int customerid)throws SQLException, ExceptionsThrown{
        
            String querry =("SELECT * FROM carport.order WHERE `customerid` = '"+ customerid +"';");
            Order order =null;
@@ -40,6 +40,7 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException{
                 try {
                     con.close();
                   }catch (SQLException ex) {
+                       throw new ExceptionsThrown("Error",ex);
                 }
             }
         }
@@ -52,6 +53,7 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException{
             try{
             con= Connector.getConnection();          
             ResultSet res = Connector.doQuery(querry);
+            
             if(!res.next());
             int idOrder = res.getInt("idOrder");
             int payment = res.getInt("payment");

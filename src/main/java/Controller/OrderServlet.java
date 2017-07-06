@@ -6,9 +6,13 @@
 package Controller;
 
 import Business.Facades.Carportfacade;
+import Business.Facades.ExceptionsThrown;
 import Data.OrderMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,21 +41,20 @@ public class OrderServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         HttpSession session = request.getSession(); 
-             int customerid = (int) request.getAttribute("customerid");
-//          
-//         Carportfacade cf = new Carportfacade();   
-OrderMapper od = new OrderMapper();
-        try  {  
-             od.getOrderByCustomerID(customerid);      
-            session.setAttribute("Order",od.getOrderByCustomerID(customerid));
-            out.println(od.getOrderByCustomerID(customerid));
+             
+        Carportfacade cf = new Carportfacade();   
+
+        try  {       
+            session.setAttribute("Order",cf.Order().getOrders());
+            out.println(cf.Order().getOrders());
             request.getRequestDispatcher("receipt.jsp"); 
             
-            
-        } catch (Exception ex) {
+        } catch (ExceptionsThrown | SQLException ex) {
               out.println("error" + ex +"!");
                 session.setAttribute("orderfailed","ExceptionsThrown");
                 request.getRequestDispatcher("CarportInput.jsp").forward(request, response);    
+        } catch (Exception ex) {
+            Logger.getLogger(OrderServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
