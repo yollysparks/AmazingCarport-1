@@ -25,12 +25,13 @@ public class CustomerMapperTest {
   
     /**
      * Test of getCustomerByID method, of class CustomerMapper.
+     * @throws java.lang.Exception
      */
     @Test
     public void testGetCustomerBypassword() throws Exception {
         System.out.println("getCustomerByID");
-        Customer c = cm.getCustomerByPassword("test");
-        assertTrue("Get customer failed", c.getPassword().equals("test"));
+        Customer c = cm.getCustomerByPassword("123456");
+        assertTrue("Get customer failed", c.getPassword().equals("123456"));
      
     }
 
@@ -41,8 +42,8 @@ public class CustomerMapperTest {
     @Test
     public void testGetEmail() throws Exception {
         System.out.println("getEmail");
-        Customer c = cm.getEmail("test");
-        assertTrue("Get Customer failed", "test".equals(c.getEmail()));
+        Customer c = cm.getEmail("test@gmail.com");
+        assertTrue("Get Customer failed", "test@gmail.com".equals(c.getEmail()));
        
     }
 
