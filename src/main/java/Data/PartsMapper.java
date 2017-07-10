@@ -21,8 +21,7 @@ public class PartsMapper {
     
     Connection con = null;
     ExceptionsThrown e = new ExceptionsThrown();
-    public  Parts getParts(int PartId)throws Exception{
-           
+    public  Parts getParts(int PartId)throws Exception{         
         try {
             con = Connector.getConnection();
             ResultSet res = Connector.doQuery("SELECT * FROM carport.carportitemsprice WHERE `ItemID` = '"+ PartId +"';");
@@ -70,12 +69,12 @@ public class PartsMapper {
                      try {
                        con.close();
                      }catch (SQLException ex) {
-                         throw new ExceptionsThrown("Error",ex);
+                       throw new ExceptionsThrown("Error",ex);
                      }
 		   }
                }
      return part; 
-    }   
+  }   
    
     public ArrayList<Parts> listParts() throws SQLException, ExceptionsThrown{
         
