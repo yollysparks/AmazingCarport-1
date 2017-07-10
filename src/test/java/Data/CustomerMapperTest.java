@@ -52,18 +52,19 @@ public class CustomerMapperTest {
      * @throws java.lang.Exception
      */
     @Test
+    @SuppressWarnings("IncompatibleEquals")
     public void testCreateCustomer() throws Exception {
         System.out.println("createCustomer");
-        String email = "y";
-        String password = "yolly";
-        String firstName = "yolly";
-        String lastName = "yolly";
-        String address = "yolly";
-        String zip = "yolly";
-        String phone = "yolly";
+        String email = "yolanda@gmail.com";
+        String password = "testing";
+        String firstName = "yolanda";
+        String lastName = "Krøier";
+        String address = "Gentofte";
+        String zip = "4567";
+        String phone = "1234567";
         CustomerMapper instance = new CustomerMapper();
         instance.createCustomer(email, password, firstName, lastName, address, zip, phone);
-        
+        assertFalse("create customer fail",instance.equals("yolanda@gmail.com,testing,yolanda,Krøier,Gentofte,4567,1234567"));
     }
     
 }

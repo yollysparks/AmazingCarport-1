@@ -10,7 +10,6 @@ import Business.Facades.ExceptionsThrown;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 /**
@@ -40,7 +39,7 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException, Exception
                 try {
                     con.close();
                   }catch (SQLException ex) {
-                       throw new ExceptionsThrown("Error",ex);
+                     throw new ExceptionsThrown("Error",ex);
                 }
             }
         }
@@ -60,10 +59,9 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException, Exception
             String date = res.getString("date");
             int  customerid = res.getInt("customerid");
            
-           order = new Order(idOrder,payment,date,customerid);
-             
-           return order;
-             
+           order = new Order(idOrder,payment,date,customerid);   
+             return order; 
+           
             }catch (SQLException ex) {
 	       System.out.println(ex.getMessage());
 		} finally {
