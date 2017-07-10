@@ -26,7 +26,7 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException, Exception
             con = Connector.getConnection();
             ResultSet res = Connector.doQuery(querry);
             if(!res.next());
-            int idOrder = res.getInt("idOrder");
+            int idOrder = res.getInt("id");
             int payment = res.getInt("payment");
             String date = res.getString("date");
                       
@@ -54,12 +54,12 @@ public  Order getOrderByCustomerID(int customerid)throws SQLException, Exception
             ResultSet res = Connector.doQuery(querry);
             
             if(!res.next());
-            int idOrder = res.getInt("idOrder");
-            int payment = res.getInt("payment");
-            String date = res.getString("date");
-            int  customerid = res.getInt("customerid");
+            int idOrder = res.getInt(1);
+            int payment = res.getInt(2);
+            String date = res.getString(3);
+            int  customerid = res.getInt(4);
            
-           order = new Order(idOrder,payment,date,customerid);   
+            order = new Order(idOrder,payment,date,customerid);   
              return order; 
            
             }catch (SQLException ex) {

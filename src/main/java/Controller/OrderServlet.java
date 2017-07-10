@@ -50,7 +50,7 @@ public class OrderServlet extends HttpServlet {
             request.getRequestDispatcher("receipt.jsp"); 
             
         } catch (ExceptionsThrown | SQLException ex) {
-              out.println("error" + ex +"!");
+                out.println("error" + ex +"!");
                 session.setAttribute("orderfailed","ExceptionsThrown");
                 request.getRequestDispatcher("CarportInput.jsp").forward(request, response);    
         } catch (Exception ex) {
