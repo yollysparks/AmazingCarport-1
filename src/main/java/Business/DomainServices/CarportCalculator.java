@@ -59,7 +59,7 @@ public class CarportCalculator {
     */
     public int calculateParts(){
         
-         int lengthParts, wightParts = 0;
+        int lengthParts, wightParts = 0;
         lengthParts = (length * 20); // adding 0.5 to be abble to add 
         wightParts = (width * 20);
         return ((int)Math.ceil(lengthParts + wightParts));//utility cohesion
@@ -73,7 +73,7 @@ public class CarportCalculator {
     Math.ceil is used again, for the same reason as in the previous class.
     */
     public int calculateBigRoofParts(){
-        int sizeOfRoof = width * length;
+       int sizeOfRoof = width * length;
        int partsPerSquareMeter = 100;
        
        /*
