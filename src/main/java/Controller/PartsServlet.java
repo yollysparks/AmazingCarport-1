@@ -41,9 +41,9 @@ public class PartsServlet extends HttpServlet {
 
      Carportfacade cf = new  Carportfacade();
         try { 
-            session.setAttribute("Flat", cf.showParts().retrieveParts());
+            session.setAttribute("Flat", cf.showParts().getList());
             request.getRequestDispatcher("parts.jsp").include(request, response); 
-            out.println( cf.showParts().retrieveParts());
+            out.println( cf.showParts().getList());
             
         } catch (Exception ex) {
                 out.println("error" + ex +"!");

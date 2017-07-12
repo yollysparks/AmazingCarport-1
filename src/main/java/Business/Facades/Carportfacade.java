@@ -28,7 +28,8 @@ public class Carportfacade {
     public Carportfacade() {}
     
     public PartsMapper showParts() throws Exception{
-     pm.retrieveParts();
+    pm.retrieveParts();
+    pm.getList();
         return pm;  
     } 
     public int price(int length,int width){

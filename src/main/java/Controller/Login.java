@@ -42,13 +42,13 @@ public class Login extends HttpServlet {
         
         Customerfacade cf = new  Customerfacade();
          try {
-             cf.customer(email, password);
+               cf.customer(email, password);
                out.println(cf.customer(email, password));
                response.sendRedirect("success.jsp");
             } catch (Exception ex) {              
                 out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
-                request.getRequestDispatcher("invalidLogin.jsp").forward(request, response); //this is where an exception is handled
+                request.getRequestDispatcher("Login.jsp").forward(request, response); //this is where an exception is handled
             }                                                                                //and the invalidLogin page is displayed instead of the 
                                                                                              //the page to crush.
         try {
@@ -60,7 +60,7 @@ public class Login extends HttpServlet {
             }
             else if(email.equals(cf.customer(email, password)) || password.equals(cf.customer(email, password))){
                 request.setAttribute("loginfailed", "invalid email");
-                response.sendRedirect("success.jsp");    
+                response.sendRedirect("invalidLogin.jsp");    
             }
         } catch (Exception ex){           
             System.out.println("error" + ex +"!");

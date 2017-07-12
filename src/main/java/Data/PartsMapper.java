@@ -29,7 +29,7 @@ public class PartsMapper {
             int itemid = res.getInt("ItemID");
             String name = res.getString("Name");
             int length = res.getInt("Length");
-             int ammount = res.getInt("Ammount");
+             int ammount = res.getInt("Amount");
            
             Parts parts = new Parts(itemid, name,length,ammount);
                         return parts;
@@ -44,24 +44,25 @@ public class PartsMapper {
                 }
             }
             
-        }
+        }  
      }
    
    public Parts retrieveParts() throws SQLException, ExceptionsThrown{
 
-            String querry=("select * from carportitemsprice;" );
+            String querry=("SELECT * FROM carport.carportitemsprice;" );
             Parts part = null;
             try{
             con= Connector.getConnection();          
             ResultSet res = Connector.doQuery(querry);
-            if(!res.next());
+            if(res.next()){
             int  itemid = res.getInt(1);
             String  name = res.getString(2);
             int  length = res.getInt(3);
-            int  ammount = res.getInt(4);
-           
-           part = new Parts(itemid, name,length,ammount);
-             return part;
+            int  ammount = res.getInt(4);  
+            
+            part = new Parts(itemid, name,length,ammount);
+            }
+          
             }catch (SQLException ex) {
 	       System.out.println(ex.getMessage());
 		} finally {
@@ -75,25 +76,28 @@ public class PartsMapper {
                }
      return part; 
   }   
-   
-    public ArrayList<Parts> listParts() throws SQLException, ExceptionsThrown{
+  
+        public ArrayList<Parts> getList() throws SQLException, ExceptionsThrown {
+        ResultSet rs = null;
+        Parts part= null;
+        ArrayList<Parts> list = new ArrayList(); 
+        String getPartList = "SELECT * FROM carport.carportitemsprice;";
+       try{      
+        con= Connector.getConnection();          
+        rs = Connector.doQuery(getPartList);
         
-        Statement st = con.createStatement();
-        String sql = ("SELECT * FROM carportitemsprice;");
-        ArrayList<Parts> partslist = new ArrayList<Parts>();
-        Parts part = null;     
-     try{
-       ResultSet rs = st.executeQuery(sql); 
-       while(rs.next()) { 
+         while (rs.next()){
             int id = rs.getInt(1);
             String name =rs.getString(2);
             int length= rs.getInt(3);
             int ammount =rs.getInt(4);
-            part= new Parts(id,name,length,ammount);
-          }
-      } catch (SQLException ex) {
-              throw new ExceptionsThrown("Error",ex); 
-        } finally {
+            part = new Parts(id, name, length, ammount);
+            list.add(part);       
+         }
+         
+        } catch (SQLException ex) {
+               System.out.println(ex.getMessage());
+           } finally {
 	           if(con != null){
                      try {
                        con.close();
@@ -101,8 +105,8 @@ public class PartsMapper {
                          throw new ExceptionsThrown("Error",ex);
                      }
 		   }
-               }
-          return partslist;
-      }
+        }
+        return list;
+    }
 }
     

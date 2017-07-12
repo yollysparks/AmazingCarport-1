@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.sql.Statement;
 
 /**
  *
@@ -18,22 +19,23 @@ public class CustomerMapper {
      
 public  Customer getCustomerByPassword(String password)throws Exception{
            Connection con = null;
+           Customer customer = null;
         try {
             con = Connector.getConnection();
             ResultSet res = Connector.doQuery("SELECT * FROM carport.customer WHERE `password` = '"+ password +"';");
-            if(!res.next()) throw new Exception("Empty ResultSet!");
-            int id = res.getInt("id");
+            if(res.next()){
+            int id = res.getInt("customerid");
             String email = res.getString("email");
             String firstName = res.getString("firstName");
             String lastName = res.getString("lastName");
             String address = res.getString("address");
             String zip = res.getString("zip");
             String phone = res.getString("phone");
-            Customer customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
-                        return customer;
-                        
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+             customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
+                
+            }
+                    
+        } catch (SQLException e) {
             throw new Exception("Database exception:\n"+e.getMessage()+"!");
         } finally {
             if(con != null){
@@ -44,24 +46,29 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 }
             }
         }
+    return customer;
     }
   
    public  Customer getEmail(String email)throws Exception{
             Connection con = null;
+            ResultSet res = null;
+            Statement st= null;
+            Customer customer = null;
+            String querry ="SELECT * FROM carport.customer WHERE `email` = '"+ email +"';";
         try {
-            con = Connector.getConnection();
-            ResultSet res = Connector.doQuery("SELECT * FROM carport.customer WHERE `email` = '"+ email +"';");
-            if(!res.next()) throw new Exception("Empty ResultSet!");
-            int id = res.getInt("id");
+           con= Connector.getConnection();          
+           res = Connector.doQuery(querry);
+            if(res.next()){
+            int id = res.getInt("customerid");
             String password = res.getString("password");
             String firstName = res.getString("firstName");
             String lastName = res.getString("lastName");
             String address = res.getString("address");
             String zip = res.getString("zip");
             String phone = res.getString("phone");
-            Customer customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
-                        return customer;
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException | SQLException e) {    
+            customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
+            } 
+        } catch (SQLException e) {    
             throw new ExceptionsThrown();
         } finally {
             if(con != null){
@@ -72,6 +79,7 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 }
             }
         }
+    return customer;
   }
    
    public void createCustomer(String email, String password, String firstName, String lastName,
