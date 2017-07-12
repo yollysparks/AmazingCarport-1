@@ -45,8 +45,8 @@ public class OrderServlet extends HttpServlet {
       
         try  {       
             session.setAttribute("Order",cf.Order().getOrders());
-            out.println(cf.Order().getOrders());
             request.getRequestDispatcher("receipt.jsp"); 
+            out.println(cf.Order().getOrders());
             
         } catch (ExceptionsThrown | SQLException ex) {
                 out.println("error" + ex +"!");
