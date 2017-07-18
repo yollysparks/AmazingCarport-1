@@ -30,7 +30,7 @@ public class testing {
         EmployeeMapper em = new EmployeeMapper();
         String password = null;
         String email = null;
-        String name = null;
+        String name = "claus";
         Connection con = null;
          String querry =("SELECT * FROM carport.order;");
          String querry2 =("SELECT * FROM salesRep WHERE `name` = '"+ name +"';");
