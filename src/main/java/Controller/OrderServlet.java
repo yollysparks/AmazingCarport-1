@@ -43,7 +43,8 @@ public class OrderServlet extends HttpServlet {
              
         Carportfacade cf = new Carportfacade();   
       
-        try  {       
+        try  {     
+           
             session.setAttribute("Order",cf.Order().getOrders());
             request.getRequestDispatcher("receipt.jsp"); 
             out.println(cf.Order().getOrders());
