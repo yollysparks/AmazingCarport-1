@@ -20,6 +20,7 @@ public class EmployeeMapper {
     public  Employee getEmployeeByName(String name)throws Exception{
            Connection con = null;
            Employee employee = null;
+   
         try {
             con = Connector.getConnection();
             ResultSet res = Connector.doQuery("SELECT * FROM salesRep WHERE `name` = '"+ name +"';");
