@@ -30,10 +30,10 @@ public class testing {
         EmployeeMapper em = new EmployeeMapper();
         String password = null;
         String email = null;
-       
+        String name = null;
         Connection con = null;
          String querry =("SELECT * FROM carport.order;");
-         String querry2 =("SELECT * FROM salesRep;");
+         String querry2 =("SELECT * FROM salesRep WHERE `name` = '"+ name +"';");
              ResultSet res = null;
              Order order = null;
              Employee employee = null;
@@ -63,8 +63,9 @@ public class testing {
              res = Connector.doQuery(querry2);
             if(res.next()){
             int id = res.getInt(1);
-            String name =res.getString(2);
+//          String name =res.getString(2);
             email = res.getString(3); 
+          
             password = res.getString(4);
             int phone = res.getInt(5);
             int customerid = res.getInt(6);

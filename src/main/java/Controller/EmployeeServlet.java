@@ -41,18 +41,20 @@ public class EmployeeServlet extends HttpServlet {
             HttpSession session = request.getSession();
            
             EmployeeMapper em = new EmployeeMapper(); 
-            String name = null;
+            String name= request.getParameter("name");  
+            String password = request.getParameter("password"); 
             Employee emp = em.getEmployeeByName(name);
-        try{   
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet EmployeeServlet</title>");            
-            out.println("</head>");
-            out.println("<body>"+emp);
-            out.println("<h1>Servlet EmployeeServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            
+        try{ 
+            
+            if(name.equals(em.getEmployeeByName(name))){
+                session.setAttribute("Login",em.getEmployeeByName(name));
+               response.sendRedirect("order.jsp");
+            }else if(!name.equals(em.getEmployeeByName(name))){
+                request.setAttribute("Loginfailed",em.getEmployeeByName(name));
+                response.sendRedirect("employee.jsp");
+            }
+          
         }catch (Exception ex) {              
                 out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
