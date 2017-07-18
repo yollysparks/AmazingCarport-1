@@ -32,7 +32,7 @@
     </nav>
 <div class="login-page">
     <div class="form">
-    <form method="POST" action="Login">
+    <form method="POST" action="EmployeeServlet">
       <input type="text" name ="name"/>
       <input type="password" name ="password"/>
       <button>login</button>

@@ -18,7 +18,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
           <li class="active"><a href="index.jsp">Home</a></li>
-        <li><a href="Login.jsp">Login</a></li>
+        <li><a href="Login.jsp">LoginUser</a></li>
+        <li><a href="employee.jsp">Employee</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
         <li><a href="order.jsp"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
       </ul>
