@@ -43,13 +43,13 @@ public class EmployeeServlet extends HttpServlet {
             EmployeeMapper em = new EmployeeMapper(); 
             String name= request.getParameter("name");  
             String password = request.getParameter("password"); 
-            Employee emp = em.getEmployeeByName(name);
+               
             
         try{ 
             em.getEmployeeByName(name);
             em.getEmployeeByPassword(password);
             out.print(em.getEmployeeByName(name));
-            out.print(em.getEmployeeByPassword(password));
+            out.print(em.getEmployeeByPassword( password));
             
             if(name.equals(em.getEmployeeByName(name))&&password.equals(em.getEmployeeByPassword(password))){
                 session.setAttribute("Login",em.getEmployeeByName(name));
