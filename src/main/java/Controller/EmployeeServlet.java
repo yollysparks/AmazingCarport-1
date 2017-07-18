@@ -46,11 +46,15 @@ public class EmployeeServlet extends HttpServlet {
             Employee emp = em.getEmployeeByName(name);
             
         try{ 
+            em.getEmployeeByName(name);
+            em.getEmployeeByPassword(password);
+            out.print(em.getEmployeeByName(name));
+            out.print(em.getEmployeeByPassword(password));
             
-            if(name.equals(em.getEmployeeByName(name))){
+            if(name.equals(em.getEmployeeByName(name))&&password.equals(em.getEmployeeByPassword(password))){
                 session.setAttribute("Login",em.getEmployeeByName(name));
                response.sendRedirect("order.jsp");
-            }else if(!name.equals(em.getEmployeeByName(name))){
+            }else if(!name.equals(em.getEmployeeByName(name))|| password.equals(em.getEmployeeByPassword(password))){
                 request.setAttribute("Loginfailed",em.getEmployeeByName(name));
                 response.sendRedirect("employee.jsp");
             }
@@ -58,7 +62,7 @@ public class EmployeeServlet extends HttpServlet {
         }catch (Exception ex) {              
                 out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
-                request.getRequestDispatcher("employee.jsp").forward(request, response); //this is where an exception is handled
+                request.getRequestDispatcher("Login.jsp").forward(request, response); //this is where an exception is handled
             }                         
     }
 
