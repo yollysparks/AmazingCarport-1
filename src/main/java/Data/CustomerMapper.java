@@ -5,6 +5,7 @@ package Data;
 
 import Business.DomainModel.Customer;
 import Business.Facades.ExceptionsThrown;
+import Business.Facades.StorageException;
 import Business.Facades.invalidPasswordException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -76,7 +77,7 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    throw new ExceptionsThrown();
+                    throw new StorageException();
                 }
             }
         }
@@ -111,7 +112,7 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    throw new ExceptionsThrown();
+                    throw new StorageException();
                 }
             }
         }
