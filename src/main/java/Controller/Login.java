@@ -6,9 +6,11 @@
 package Controller;
 
 import Business.Facades.Customerfacade;
-import Business.Facades.ExceptionsThrown;
+import Business.Facades.StorageException;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -62,10 +64,12 @@ public class Login extends HttpServlet {
                 request.setAttribute("loginfailed", "invalid email");
                 response.sendRedirect("invalidLogin.jsp");    
             }
-        } catch (Exception ex){           
+        } catch (StorageException ex){           
             System.out.println("error" + ex +"!");
                 request.setAttribute("loginfailed","ExceptionsThrown");
                 request.getRequestDispatcher("invalidLogin.jsp");
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
   
         
