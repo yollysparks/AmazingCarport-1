@@ -5,6 +5,7 @@ package Data;
 
 import Business.DomainModel.Customer;
 import Business.Facades.ExceptionsThrown;
+import Business.Facades.invalidPasswordException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public  Customer getCustomerByPassword(String password)throws Exception{
                 try {
                     con.close();
                 }catch (SQLException ex) {
-                    throw new ExceptionsThrown();
+                    throw new invalidPasswordException();
                 }
             }
         }
