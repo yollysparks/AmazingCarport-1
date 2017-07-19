@@ -6,6 +6,9 @@
 package Controller;
 
 import Business.DomainModel.Employee;
+import Business.Facades.Carportfacade;
+import Business.Facades.Customerfacade;
+import Business.Facades.StorageException;
 import Data.EmployeeMapper;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -37,33 +40,6 @@ public class EmployeeServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
             response.setContentType("text/html;charset=UTF-8");
-            PrintWriter out = response.getWriter();
-            HttpSession session = request.getSession();
-           
-            EmployeeMapper em = new EmployeeMapper(); 
-            String name= request.getParameter("name");  
-            String password = request.getParameter("password"); 
-               
-            
-        try{ 
-            em.getEmployeeByName(name);
-            em.getEmployeeByPassword(password);
-            out.print(em.getEmployeeByName(name));
-            out.print(em.getEmployeeByPassword( password));
-            
-            if(name.equals(em.getEmployeeByName(name))&&password.equals(em.getEmployeeByPassword(password))){
-                session.setAttribute("Login",em.getEmployeeByName(name));
-               response.sendRedirect("order.jsp");
-            }else if(!name.equals(em.getEmployeeByName(name))|| password.equals(em.getEmployeeByPassword(password))){
-                request.setAttribute("Loginfailed",em.getEmployeeByName(name));
-                response.sendRedirect("employee.jsp");
-            }
-          
-        }catch (Exception ex) {              
-                out.println("error" + ex +"!");
-                request.setAttribute("loginfailed","ExceptionsThrown");
-                request.getRequestDispatcher("Login.jsp").forward(request, response); //this is where an exception is handled
-            }                         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -96,12 +72,45 @@ public class EmployeeServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        PrintWriter out = response.getWriter();
+        HttpSession session = request.getSession();
+        String name = request.getParameter("name");  
+        String password = request.getParameter("password"); 
+        
+        Carportfacade cf = new Carportfacade();
+         try {
+              cf.employee(name, password);
+               out.println(cf.employee(name, password));
+               response.sendRedirect("LoggedIn.jsp");
+            } catch (Exception ex) {              
+                out.println("error" + ex +"!");
+                request.setAttribute("loginfailed","ExceptionsThrown");
+                request.getRequestDispatcher("employee.jsp").forward(request, response); //this is where an exception is handled
+            }                                                                                //and the invalidLogin page is displayed instead of the 
+                                                                                             //the page to crush.
         try {
-            processRequest(request, response);
+            if(name.equals(cf.employee(name, password)) && password.equals(cf.employee(name, password))){
+                session.setAttribute("customer", cf.employee(name, password));
+                response.sendRedirect("success.jsp");
+                System.out.println("Unable to retrieve customer!");
+//                ex.printStackTrace();
+            }
+            else if(name.equals(cf.employee(name, password)) || password.equals(cf.employee(name, password))){
+                request.setAttribute("loginfailed", "invalid email");
+                response.sendRedirect("invalidLogin.jsp");    
+            }
+        } catch (StorageException ex){           
+            System.out.println("error" + ex +"!");
+                request.setAttribute("loginfailed","ExceptionsThrown");
+                request.getRequestDispatcher("invalidLogin.jsp");
         } catch (Exception ex) {
-            Logger.getLogger(EmployeeServlet.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
+  
+        
+    }  
+
+    
 
     /**
      * Returns a short description of the servlet.
