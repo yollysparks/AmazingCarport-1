@@ -9,6 +9,7 @@ import Business.DomainServices.CarportCalculator;
 import Business.DomainServices.SVGCreator;
 import Data.Connector;
 import Data.CustomerMapper;
+import Data.EmployeeMapper;
 import Data.OrderMapper;
 import Data.PartsMapper;
 
@@ -20,6 +21,7 @@ public class Carportfacade {
   CustomerMapper cm = new  CustomerMapper();
   OrderMapper om = new OrderMapper();
   PartsMapper pm= new PartsMapper();
+  EmployeeMapper em = new EmployeeMapper();
   Connector con = new Connector();
   
   CarportCalculator calc = new CarportCalculator();
@@ -54,4 +56,11 @@ public class Carportfacade {
      cm.createCustomer(email, password, firstName, lastName, address, zip, phone);   
       return cm;
     }
+    
+     
+    public String employee(String name,String password) throws Exception{
+    em.getEmployeeByName(name);
+    em.getEmployeeByPassword(password);
+    return cm.toString();
+ }
 }
