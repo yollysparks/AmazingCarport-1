@@ -5,8 +5,8 @@ package Data;
 
 import Business.DomainModel.Customer;
 import Business.Facades.ExceptionsThrown;
-import Business.Facades.StorageException;
-import Business.Facades.invalidPasswordException;
+import Business.Exceptions.StorageException;
+import Business.Exceptions.invalidPasswordException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
