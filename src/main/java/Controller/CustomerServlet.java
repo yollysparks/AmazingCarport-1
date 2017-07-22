@@ -23,7 +23,7 @@ import javax.servlet.http.HttpSession;
  * @author felesiah
  */
 @WebServlet(name = "Login", urlPatterns = {"/Login"})
-public class Login extends HttpServlet {
+public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -69,7 +69,7 @@ public class Login extends HttpServlet {
                 request.setAttribute("loginfailed","ExceptionsThrown");
                 request.getRequestDispatcher("invalidLogin.jsp");
         } catch (Exception ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
   
         

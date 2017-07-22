@@ -9,20 +9,20 @@ package Business.Exceptions;
  *
  * @author felesiah
  */
-public class invalidPasswordException extends Exception{
+public class InvalidCredentialsException extends Exception{
 
-    public invalidPasswordException() {
+    public InvalidCredentialsException() {
     }
 
-    public invalidPasswordException(String message) {
+    public InvalidCredentialsException(String message) {
         super(message);
     }
 
-    public invalidPasswordException(String message, Throwable cause) {
+    public InvalidCredentialsException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public invalidPasswordException(Throwable cause) {
+    public InvalidCredentialsException(Throwable cause) {
         super(cause);
     }
     

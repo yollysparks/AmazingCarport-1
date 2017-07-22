@@ -2,7 +2,7 @@
 import Business.DomainModel.Employee;
 import Business.DomainModel.Order;
 import Business.Facades.Customerfacade;
-import Business.Facades.ExceptionsThrown;
+import Business.Exceptions.ExceptionsThrown;
 import Data.Connector;
 import Data.CustomerMapper;
 import Data.EmployeeMapper;

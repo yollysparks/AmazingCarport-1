@@ -7,7 +7,7 @@ package Controller;
 
 import Business.DomainModel.Employee;
 import Business.Facades.Carportfacade;
-import Business.Facades.Customerfacade;
+import Business.Facades.CustomerFacade;
 import Business.Exceptions.StorageException;
 import Data.EmployeeMapper;
 import java.io.IOException;
@@ -104,7 +104,7 @@ public class EmployeeServlet extends HttpServlet {
                 request.setAttribute("loginfailed","ExceptionsThrown");
                 request.getRequestDispatcher("invalidLogin.jsp");
         } catch (Exception ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
   
         

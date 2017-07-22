@@ -7,7 +7,7 @@ package Data;
 
 
 import Business.DomainModel.Employee;
-import Business.Facades.ExceptionsThrown;
+import Business.Exceptions.ExceptionsThrown;
 import Business.Exceptions.StorageException;
 import java.sql.Connection;
 import java.sql.ResultSet;

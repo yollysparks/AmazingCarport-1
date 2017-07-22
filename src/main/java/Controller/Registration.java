@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Business.Facades.Customerfacade;
+import Business.Facades.CustomerFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -82,7 +82,7 @@ public class Registration extends HttpServlet {
             String phone = request.getParameter("phone");
             HttpSession session = request.getSession();
 
-           Customerfacade cf = new Customerfacade();
+           CustomerFacade cf = new CustomerFacade();
         try {
             cf.newCustomer(email, password1, firstName, lastName, address, zip, phone);
              response.sendRedirect("success.jsp");
