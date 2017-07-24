@@ -12,63 +12,49 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author ivoni
- */
-public class Connector {
+
+ public class Connector {
+
+    private static final String USER = "root";
+    private static final String USERPW = "casp6672";
+    private static final String DBNAME = "Carport";
+    // private static final String HOST = "188.166.91.15"; <-- For later usage
     
-        private static final String ip	     = "104.236.240.10";
-        private static final String driver = "com.mysql.jdbc.Driver";
-	private static final int    port     = 3306;
-	public static final String database  = "carport";
-	private static final String username = "fogUser"; 
-	private static final String password = "zQBL8_jjC";
-        private static Connection conn = null;
-        
-              
-        public static Connection getConnection() throws SQLException {
-            try {
-                Class.forName(driver);
-            } catch (ClassNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            }
-           String url = "jdbc:mysql://" + ip + ":" + port + "/" + database;
-            conn = (Connection) DriverManager.getConnection(url, username, password);
-            return conn;
+    private static Connection conn = null;
+    
+    public static Connection getConnection() {
+        try {
+            String url = String.format("jdbc:mysql://%s:3306/%s", DBNAME);
+            Class.forName("com.mysql.jdbc.Driver");
+            return DriverManager.getConnection(url, USER, USERPW);  
+        } catch (ClassNotFoundException | SQLException e) {
+            System.out.println("\n*** Remember to insert your  ID and PW in the DBConnector class! ***\n");
+            System.out.println("error in DBConnector.getConnection()");
+            System.out.println(e);
         }
-        
-        /**
-	 * Executes the query on the database
-	 * 
-	 * @param query the query to be executed
-	 * @return a ResultSet containing the rows which fulfills the query
-         * @throws java.sql.SQLException
-	 */
+        return null;
+    }
+
+    public void releaseConnection(Connection con) {
+        try {
+            con.close();
+        } catch (SQLException e) {
+            System.err.println(e);
+        }
+    }
+
 	public static ResultSet doQuery(String query) throws SQLException {
 		Statement statement = conn.createStatement();
 		return statement.executeQuery(query);
 	}
 
-	/**
-	 * Executes an update on the database
-	 * 
-	 * @param query the query to be executed
-	 * @return 1 if update successful, else 0
-	 * @throws SQLException
-	 */
+	
 	public boolean doUpdate(String query) throws SQLException {
 		Statement statement = conn.createStatement();
 		return statement.executeUpdate(query) > 0;
 	}
 	
-	/**
-	 * Create a prepared statement
-	 * 
-	 * @param query the content of the statement
-	 * @return the statement
-	 * @throws SQLException
-	 */
+	
 	public PreparedStatement prepareStatement(String query) throws SQLException{
 		Statement statement = conn.createStatement();
 		return statement.getConnection().prepareStatement(query);

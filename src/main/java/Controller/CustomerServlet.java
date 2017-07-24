@@ -5,8 +5,9 @@
  */
 package Controller;
 
-import Business.Facades.Customerfacade;
+
 import Business.Exceptions.StorageException;
+import Business.Facades.CustomerFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -42,7 +43,7 @@ public class CustomerServlet extends HttpServlet {
         String email = request.getParameter("email");  
         String password = request.getParameter("password"); 
         
-        Customerfacade cf = new  Customerfacade();
+        CustomerFacade cf = new  CustomerFacade();
          try {
                cf.customer(email, password);
                out.println(cf.customer(email, password));

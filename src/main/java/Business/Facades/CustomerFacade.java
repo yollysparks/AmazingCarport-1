@@ -47,6 +47,11 @@ public class CustomerFacade {
         CustomerMapper cm = new CustomerMapper(con);
         cm.customerSignup(email, password, firstName, lastName, address, phone);
     }
+    public void setCustomerId(Customer customer) throws StorageException {
+        Connection con = Connector.getConnection();
+        CustomerMapper cm = new CustomerMapper(con);
+        cm.setCustomerId(customer);
+    }
 }
     
     

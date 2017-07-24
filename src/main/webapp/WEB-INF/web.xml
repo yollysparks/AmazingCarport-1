@@ -5,24 +5,24 @@
         <servlet-class>Controller.Login</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>Registration</servlet-name>
-        <servlet-class>Controller.Registration</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>CarportInput</servlet-name>
         <servlet-class>Controller.CarportInput</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConsumerServlet</servlet-name>
+        <servlet-class>Controller.ConsumerServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>Registration</servlet-name>
-        <url-pattern>/Registration</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>CarportInput</servlet-name>
         <url-pattern>/CarportInput</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsumerServlet</servlet-name>
+        <url-pattern>/ConsumerServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

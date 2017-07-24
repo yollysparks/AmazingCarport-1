@@ -1,11 +1,12 @@
 /*
- *  CRUD data mapper for the customer entity
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Data;
 
 import Business.DomainModel.Customer;
 import Business.Exceptions.EmailAlreadyExsistsException;
-import Business.Exceptions.ExceptionsThrown;
 import Business.Exceptions.StorageException;
 import Business.Exceptions.InvalidCredentialsException;
 import Business.Exceptions.UnsafePasswordException;
@@ -14,7 +15,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
-import java.sql.Statement;
 import org.apache.commons.validator.EmailValidator;
 
 /**
@@ -80,107 +80,43 @@ public Customer customerLogin(String email, String password) throws StorageExcep
         } catch (SQLException ex) {
             throw new StorageException();
         } 
-    }
-/*public  Customer getCustomerByPassword(String password)throws Exception{
-           Connection con = null;
-           Customer customer = null;
-        try {
-            con = Connector.getConnection();
-            ResultSet res = Connector.doQuery("SELECT * FROM carport.customer WHERE `password` = '"+ password +"';");
-            if(res.next()){
-            int id = res.getInt("customerid");
-            String email = res.getString("email");
-            String firstName = res.getString("firstName");
-            String lastName = res.getString("lastName");
-            String address = res.getString("address");
-            String zip = res.getString("zip");
-            String phone = res.getString("phone");
-             customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
-                
-            }
-                    
-        } catch (SQLException e) {
-            throw new Exception("Database exception:\n"+e.getMessage()+"!");
-        } finally {
-            if(con != null){
-                try {
-                    con.close();
-                }catch (SQLException ex) {
-                    throw new invalidPasswordException();
+}
+    
+    public boolean emailExists(String email) throws StorageException {
+        String str = "SELECT email FROM Customer;";
+        try (final PreparedStatement st = con.prepareStatement(str)) {
+            boolean emailExists = false;
+            try (final ResultSet rs = st.executeQuery()) {
+                String emailCounter;
+                while (rs.next()) {
+                    emailCounter = rs.getString("email");
+                    if (emailCounter.equals(email)) {
+                        emailExists = true;
+                    }
                 }
             }
-        }
-    return customer;
+            return emailExists;
+        } catch (SQLException ex) {
+            throw new StorageException();
+        } 
     }
- 
-   public  Customer getEmail(String email)throws Exception{
-            Connection con = null;
-            ResultSet res = null;
-            Statement st= null;
-            Customer customer = null;
-            String querry ="SELECT * FROM carport.customer WHERE `email` = '"+ email +"';";
-        try {
-           con= Connector.getConnection();          
-           res = Connector.doQuery(querry);
-            if(res.next()){
-            int id = res.getInt("customerid");
-            String password = res.getString("password");
-            String firstName = res.getString("firstName");
-            String lastName = res.getString("lastName");
-            String address = res.getString("address");
-            String zip = res.getString("zip");
-            String phone = res.getString("phone");
-            // customer = new Customer(id, email, password, firstName, lastName, address, zip, phone);
-            } 
-        } catch (SQLException e) {    
-            throw new ExceptionsThrown();
-        } finally {
-            if(con != null){
-                try {
-                    con.close();
-                }catch (SQLException ex) {
-                    throw new StorageException();
-                }
-            }
-        }
-    return customer;
-  }
-   
-   public void createCustomer(String email, String password, String firstName, String lastName,
-           String address, String zip, String phone) throws Exception 
-        {
-            Connection con = null;
-            PreparedStatement preparedStatement = null;
 
-            String insertTableSQL = "INSERT INTO customer"
-		+ "(email, password, firstName, lastName, address, zip, phone) VALUES"
-		+ "(?,?,?,?,?,?,?)";
-       try{
-                con = Connector.getConnection();
-                preparedStatement = con.prepareStatement(insertTableSQL);
-                preparedStatement.setString(1, email);
-                preparedStatement.setString(2, password);
-                preparedStatement.setString(3, firstName);
-                preparedStatement.setString(4, lastName);
-                preparedStatement.setString(5, address);
-                preparedStatement.setString(6, zip);
-                preparedStatement.setString(7, phone);
-                // execute insert SQL stetement
-                preparedStatement.executeUpdate();
-       }  catch (SQLException e) {
-                System.out.println(e.getMessage());
-                } finally {
-            if(con != null){
-                try {
-                    con.close();
-                }catch (SQLException ex) {
-                    throw new StorageException();
+    public void setCustomerId(Customer customer) throws StorageException {
+        String getCustomerIdString = "SELECT idCustomer FROM Customer WHERE email = ? AND password = ? ;";
+        try (final PreparedStatement getCustomerId = con.prepareStatement(getCustomerIdString)) {
+            int id = 0;
+            getCustomerId.setString(1, customer.getEmail());
+            getCustomerId.setString(2, customer.getPassword());
+            try (final ResultSet rs = getCustomerId.executeQuery()) {
+                if (rs.next()) {
+                    id = rs.getInt(1);
                 }
+                customer.setId_customer(id);
             }
-        }
-   }
-
-    private boolean emailExists(String email) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        } catch (SQLException ex) {
+            throw new StorageException();
+        } 
     }
-}  
+}
+
+

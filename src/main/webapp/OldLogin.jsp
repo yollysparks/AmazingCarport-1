@@ -24,7 +24,7 @@
 <div class="login-page">
     <div class="form">
       <form class="form-horizontal" name ="CustomerLoginForm" action="ConsumerServlet" method="POST">
-                        <input type="hidden" name="formName" value="CustomerLoginForm"/>
+         <input type="hidden" name="formName" value="CustomerLoginForm"/>
     <form method="POST" action="Login">
       <input type="text" name ="email"/>
       <input type="password" name ="password"/>
