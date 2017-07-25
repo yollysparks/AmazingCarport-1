@@ -18,7 +18,7 @@ import Data.PartsMapper;
  * @author felesiah
  */
 public class Carportfacade {
-  CustomerMapper cm = new  CustomerMapper();
+  // CustomerMapper cm = new CustomerMapper();
   OrderMapper om = new OrderMapper();
   PartsMapper pm= new PartsMapper();
   EmployeeMapper em = new EmployeeMapper();
@@ -51,16 +51,16 @@ public class Carportfacade {
       om.getOrders();
        return om;
     } 
-    
-    public CustomerMapper newCustomer(String email,String password,String firstName,String lastName,String address,String zip,String phone) throws Exception{   
-     cm.createCustomer(email, password, firstName, lastName, address, zip, phone);   
-      return cm;
-    }
-    
-     
-    public String employee(String name,String password) throws Exception{
-    em.getEmployeeByName(name);
-    em.getEmployeeByPassword(password);
-    return cm.toString();
- }
 }
+//    public CustomerMapper newCustomer(String email,String password,String firstName,String lastName,String address,String zip,String phone) throws Exception{   
+//     // cm.createCustomer(email, password, firstName, lastName, address, zip, phone);   
+//      // return cm;
+//    }
+//    
+//     
+//    public String employee(String name,String password) throws Exception{
+//    em.getEmployeeByName(name);
+//    em.getEmployeeByPassword(password);
+//    //return cm.toString();
+// }
+//}

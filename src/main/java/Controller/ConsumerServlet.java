@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
  * @author caspergrosslarsen
  */
 public class ConsumerServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException, UnsafePasswordException, WrongEmailFormatException, EmailAlreadyExsistsException, StorageException, InvalidCredentialsException {
         response.setContentType("text/html;charset=UTF-8");

@@ -1,7 +1,7 @@
 
 import Business.DomainModel.Employee;
 import Business.DomainModel.Order;
-import Business.Facades.Customerfacade;
+import Business.Facades.CustomerFacade;
 import Business.Exceptions.ExceptionsThrown;
 import Data.Connector;
 import Data.CustomerMapper;
@@ -26,7 +26,7 @@ public class testing {
     public static void main(String[] args) throws SQLException, ExceptionsThrown, Exception {
         PartsMapper pm = new PartsMapper();
         OrderMapper om = new OrderMapper();
-        Customerfacade cm = new Customerfacade();
+        CustomerFacade cm = new CustomerFacade();
         EmployeeMapper em = new EmployeeMapper();
         String password = null;
         String email = null;

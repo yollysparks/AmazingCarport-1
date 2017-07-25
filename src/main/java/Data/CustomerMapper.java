@@ -117,6 +117,40 @@ public Customer customerLogin(String email, String password) throws StorageExcep
             throw new StorageException();
         } 
     }
+    public void updateCustomerInformation(Customer updatedCustomer, Customer oldCustomer) throws UnsafePasswordException, WrongEmailFormatException, StorageException, UnsafePasswordException, EmailAlreadyExsistsException {
+        String str = "UPDATE Customer SET email = ?, password = ?, firstName = ?, lastName = ?, address = ?, phone = ? WHERE idCustomer = ?;";
+        try (final PreparedStatement updateCustomerInformation = con.prepareStatement(str)) {
+            con.setAutoCommit(false);
+            if (emailExists(updatedCustomer.getEmail()) && updatedCustomer.getEmail().equals(oldCustomer.getEmail())) {
+                updateCustomerInformation.setString(1, oldCustomer.getEmail());
+            } else if (emailExists(updatedCustomer.getEmail()) && !updatedCustomer.getEmail().equals(oldCustomer.getEmail())) {
+                throw new EmailAlreadyExsistsException();
+            } else {
+                updateCustomerInformation.setString(1, updatedCustomer.getEmail());
+            }
+            updateCustomerInformation.setString(2, updatedCustomer.getPassword());
+            updateCustomerInformation.setString(3, updatedCustomer.getFirstName());
+            updateCustomerInformation.setString(4, updatedCustomer.getLastName());
+            updateCustomerInformation.setString(5, updatedCustomer.getAddress());
+            updateCustomerInformation.setString(6, updatedCustomer.getPhone());
+            updateCustomerInformation.setInt(7, oldCustomer.getId_customer());
+            boolean valid = org.apache.commons.validator.routines.EmailValidator.getInstance().isValid(updatedCustomer.getEmail());
+            if (!valid) {
+                throw new WrongEmailFormatException();
+            }
+            if (updatedCustomer.getPassword().length() < 7) {
+                throw new UnsafePasswordException();
+            }
+            int rowAffected = updateCustomerInformation.executeUpdate();
+            if (rowAffected == 1) {
+                con.commit();
+            } else {
+                con.rollback();
+            }
+        } catch (SQLException e) {
+            throw new StorageException();
+        } 
+    }
 }
 
 

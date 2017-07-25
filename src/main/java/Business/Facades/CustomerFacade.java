@@ -52,6 +52,11 @@ public class CustomerFacade {
         CustomerMapper cm = new CustomerMapper(con);
         cm.setCustomerId(customer);
     }
+    public void updateCustomerInformation(Customer updatedCustomer, Customer oldCustomer) throws WrongEmailFormatException, InvalidCredentialsException, UnsafePasswordException, EmailAlreadyExsistsException, StorageException {
+        Connection con = Connector.getConnection();
+        CustomerMapper cm = new CustomerMapper(con);
+        cm.updateCustomerInformation(updatedCustomer, oldCustomer);
+    }
 }
     
     

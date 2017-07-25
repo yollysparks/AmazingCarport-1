@@ -5,7 +5,7 @@
  */
 package Data;
 
-import Business.DomainModel.Customer;
+
 import Business.Exceptions.EmailAlreadyExsistsException;
 import Business.Exceptions.InvalidCredentialsException;
 import Business.Exceptions.StorageException;
@@ -15,12 +15,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 public class CustomerMapperTest {
 
@@ -64,34 +62,34 @@ public class CustomerMapperTest {
 
     @Test(expected = WrongEmailFormatException.class)
     public void customerSignupWrongEmailFormat() throws UnsafePasswordException, WrongEmailFormatException, StorageException, EmailAlreadyExsistsException, InvalidCredentialsException {
-        String email = "test@test.comewds";
+        String email = "test@test.comadsgds";
         String password = "1234567";
-        String firstName = "Tester";
-        String lastName = "Testerton";
-        String address = "Testerstreet 139";
-        String phone = "90490302";
+        String firstName = "EmailFormatTester";
+        String lastName = "EmailFormatTester";
+        String address = "Testingstreet 007";
+        String phone = "99999999";
         cm.customerSignup(email, password, firstName, lastName, address, phone);
     }
 
     @Test(expected = UnsafePasswordException.class)
     public void customerSignupUnsafePassword() throws UnsafePasswordException, WrongEmailFormatException, StorageException, EmailAlreadyExsistsException, InvalidCredentialsException {
         String email = "test@test.com";
-        String password = "123456";
-        String firstName = "Tester";
-        String lastName = "Testerton";
-        String address = "Testerstreet 139";
-        String phone = "90490302";
+        String password = "1234";
+        String firstName = "UnsafePasswordTester";
+        String lastName = "UnsafePasswordTester";
+        String address = "Testingstreet 007";
+        String phone = "99999999";
         cm.customerSignup(email, password, firstName, lastName, address, phone);
     }
 
     @Test(expected = EmailAlreadyExsistsException.class)
     public void customerSignupEmailAlreadyInUse() throws UnsafePasswordException, WrongEmailFormatException, StorageException, EmailAlreadyExsistsException, InvalidCredentialsException {
-        String email = "lovro@mail.com";
+        String email = "casper@mail.com"; // Needs to be inserted into DB before test can be executed 100%
         String password = "1234567";
-        String firstName = "Tester";
-        String lastName = "Testerton";
-        String address = "Testerstreet 139";
-        String phone = "90490302";
+        String firstName = "EmailExsistingTester";
+        String lastName = "EmailExsistingTester";
+        String address = "Testingstreet 007";
+        String phone = "99999999";
         cm.customerSignup(email, password, firstName, lastName, address, phone);
     }
 }
